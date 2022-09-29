@@ -25,7 +25,7 @@ class _ProfileViewState extends State<ProfileView> {
     return Scaffold(
       backgroundColor: Constants.whiteColor,
       appBar: AppBar(
-        backgroundColor: Constants.primaryColor3,
+        backgroundColor: Constants.primaryColor,
         elevation: 0,
         iconTheme: const IconThemeData(color: Constants.blackColor),
         title: Text(

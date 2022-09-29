@@ -22,7 +22,7 @@ class _HomeViewState extends State<HomeView> {
     return Scaffold(
       backgroundColor: Constants.whiteColor,
       appBar: AppBar(
-        backgroundColor: Constants.primaryColor3,
+        backgroundColor: Constants.primaryColor,
         automaticallyImplyLeading: false,
         elevation: 0,
       ),

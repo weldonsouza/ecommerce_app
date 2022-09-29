@@ -37,7 +37,7 @@ class _LoginSignupViewState extends State<LoginSignupView> with TickerProviderSt
           backgroundColor: Constants.whiteColor,
           resizeToAvoidBottomInset: false,
           appBar: AppBar(
-            backgroundColor: Constants.surface,
+            backgroundColor: Constants.primaryColor,
             elevation: 0,
             iconTheme: const IconThemeData(color: Constants.blackColor),
             centerTitle: true,

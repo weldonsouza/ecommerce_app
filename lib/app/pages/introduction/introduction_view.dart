@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+import '../../../core/route/navigation_service.dart';
 import '../../../core/utils/constants.dart';
+import '../login/login_view.dart';
 
 class IntroductionView extends StatefulWidget {
   const IntroductionView({Key? key}) : super(key: key);
@@ -44,7 +46,7 @@ class _IntroductionViewState extends State<IntroductionView> {
                 child: Text(
                   'Get the decibels delivered to your ears perfectly.',
                   style: TextStyle(
-                    color: Constants.colorDivider,
+                    color: Constants.primaryColor,
                     fontSize: 18,
                     fontWeight: FontWeight.w500,
                   ),
@@ -82,7 +84,7 @@ class _IntroductionViewState extends State<IntroductionView> {
                 child: Text(
                   'Get the decibels delivered to your ears perfectly.',
                   style: TextStyle(
-                    color: Constants.colorDivider,
+                    color: Constants.primaryColor,
                     fontSize: 18,
                     fontWeight: FontWeight.w500,
                   ),
@@ -120,7 +122,7 @@ class _IntroductionViewState extends State<IntroductionView> {
                 child: Text(
                   'Get the decibels delivered to your ears perfectly.',
                   style: TextStyle(
-                    color: Constants.colorDivider,
+                    color: Constants.primaryColor,
                     fontSize: 18,
                     fontWeight: FontWeight.w500,
                   ),
@@ -135,9 +137,6 @@ class _IntroductionViewState extends State<IntroductionView> {
 
   @override
   Widget build(BuildContext context) {
-    //Controller do provider
-    //var introductionController = Provider.of<IntroductionProviderController>(context);
-
     return Scaffold(
       backgroundColor: Constants.whiteColor,
       body: Stack(
@@ -166,7 +165,7 @@ class _IntroductionViewState extends State<IntroductionView> {
                     count: pages.length,
                     effect: const ExpandingDotsEffect(
                       activeDotColor: Constants.whiteColor,
-                      dotColor: Constants.colorDivider,
+                      dotColor: Constants.textColor,
                       dotHeight: 12,
                       dotWidth: 12,
                       spacing: 8,
@@ -184,6 +183,10 @@ class _IntroductionViewState extends State<IntroductionView> {
                     ),
                     onPressed: () {
                       controller.nextPage(duration: const Duration(milliseconds: 300), curve: Curves.ease);
+
+                      if(text == 'Get started') {
+                        navigationService.pushReplacement(LoginView.routeName);
+                      }
                     },
                     child: Row(
                       children: [
@@ -194,7 +197,11 @@ class _IntroductionViewState extends State<IntroductionView> {
                             style: const TextStyle(fontSize: 16),
                           ),
                         ),
-                        const Icon(Icons.arrow_forward_ios, color: Constants.blackColor, size: 16),
+                        const Icon(
+                          Icons.arrow_forward_ios,
+                          color: Constants.blackColor,
+                          size: 16,
+                        ),
                       ],
                     ),
                   ),
