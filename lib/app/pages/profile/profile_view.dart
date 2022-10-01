@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
@@ -37,6 +38,7 @@ class _ProfileViewState extends State<ProfileView> {
           ),
         ),
         titleSpacing: 0,
+        systemOverlayStyle: SystemUiOverlayStyle.dark,
         leading: IconButton(
           icon: const Icon(
             Icons.arrow_back_outlined,
@@ -48,13 +50,17 @@ class _ProfileViewState extends State<ProfileView> {
           },
         ),
       ),
-      body: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
-        child: Stack(
-          children: [
-
-          ],
-        ),
+      body: Column(
+        children: [
+          Text(
+            'Perfil',
+            style: GoogleFonts.poppins(
+              color: Constants.blackColor,
+              fontSize: 28,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
       ),
     );
   }

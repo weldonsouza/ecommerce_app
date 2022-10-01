@@ -1,32 +1,30 @@
+import 'package:ecommerce_app/app/pages/search/search_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../bag/bag_view.dart';
+import '../favorite/favorite_view.dart';
 import '../home/home_view.dart';
 import '../login/login_view_model.dart';
 import '../profile/profile_view.dart';
-import 'bottom_navigation_bar_controller.dart';
 
 class BottomNavigationBarProviderController with ChangeNotifier {
-  int selectedIndex = 1;
+  int selectedIndex = 0;
   var loginController;
   late BuildContext context;
 
   final List<Widget> pages = [
-    const ProfileView(),
     const HomeView(),
+    const FavoriteView(),
+    const SearchView(),
+    const BagView(),
+    const ProfileView(),
   ];
 
   setContext(BuildContext value) => context = value;
 
   onItemTapped(int index) {
-    if (loginController.previousPage == 'address' && index == 0) {
-    } else if (loginController.previousPage == 'address' && index == 1) {
-    } else if (loginController.previousPage == 'address') {
-
-    } else {
-      selectedIndex = index;
-    }
-
+    selectedIndex = index;
     notifyListeners();
   }
 

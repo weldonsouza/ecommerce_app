@@ -5,11 +5,15 @@ import 'package:provider/provider.dart';
 import '../core/provider/provider_setup.dart';
 import '../core/route/navigation_service.dart';
 import '../core/utils/constants.dart';
+import 'pages/bag/bag_view.dart';
+import 'pages/favorite/favorite_view.dart';
 import 'pages/home/home_view.dart';
 import 'pages/introduction/introduction_view.dart';
+import 'pages/login/forgot_password_view.dart';
 import 'pages/login/login_signup_view.dart';
 import 'pages/login/login_view.dart';
 import 'pages/main/bottom_navigation_bar_controller.dart';
+import 'pages/search/search_view.dart';
 import 'pages/splash/splash_view.dart';
 
 class MainApp extends StatelessWidget {
@@ -43,8 +47,12 @@ class MainApp extends StatelessWidget {
           BottomNavigationBarController.routeName: (BuildContext context) => const BottomNavigationBarController(),
           SplashView.routeName: (BuildContext context) => const SplashView(),
           LoginView.routeName: (BuildContext context) => const LoginView(),
-          LoginSignupView.routeName: (BuildContext context) => const LoginSignupView(),
+          LoginSignUpView.routeName: (BuildContext context) => const LoginSignUpView(),
           HomeView.routeName: (BuildContext context) => const HomeView(),
+          ForgotPasswordView.routeName: (BuildContext context) => const ForgotPasswordView(),
+          BagView.routeName: (BuildContext context) => const BagView(),
+          SearchView.routeName: (BuildContext context) => const SearchView(),
+          FavoriteView.routeName: (BuildContext context) => const FavoriteView(),
         },
       ),
     );

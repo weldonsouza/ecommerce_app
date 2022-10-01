@@ -44,25 +44,18 @@ class _SplashViewState extends State<SplashView> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Padding(
-            padding: const EdgeInsets.all(50),
-            child: Column(
-              children: [
-                const Icon(
-                  Icons.headphones,
-                  color: Constants.whiteColor,
-                  size: 60,
-                ),
-                SizedBox(width: Utils.mediaQuery(context, 1), height: 8),
-                const Text(
-                  'Headphones',
-                  style: TextStyle(
-                    color: Constants.whiteColor,
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
+          const Icon(
+            Icons.headphones,
+            color: Constants.whiteColor,
+            size: 60,
+          ),
+          SizedBox(width: Utils.mediaQuery(context, 1), height: 8),
+          const Text(
+            'Headphones',
+            style: TextStyle(
+              color: Constants.whiteColor,
+              fontSize: 32,
+              fontWeight: FontWeight.bold,
             ),
           ),
         ],

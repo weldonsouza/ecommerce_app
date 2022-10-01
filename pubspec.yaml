@@ -13,7 +13,6 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.5
   cached_network_image: ^3.2.2
-  carousel_slider: ^4.1.1
   flutter_svg: ^1.1.5
   google_fonts: ^3.0.1
   provider: ^6.0.3
@@ -24,10 +23,10 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.1
 
 flutter:
   uses-material-design: true
   assets:
     - assets/background/
     - assets/earphone/
+    - assets/icons/
