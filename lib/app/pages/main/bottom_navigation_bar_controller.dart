@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -16,8 +14,8 @@ class BottomNavigationBarController extends StatefulWidget {
   State<BottomNavigationBarController> createState() => _BottomNavigationBarControllerState();
 }
 
-class _BottomNavigationBarControllerState extends State<BottomNavigationBarController> {
-
+class _BottomNavigationBarControllerState
+    extends State<BottomNavigationBarController> {
   @override
   void initState() {
     super.initState();
@@ -29,18 +27,19 @@ class _BottomNavigationBarControllerState extends State<BottomNavigationBarContr
 
   @override
   Widget build(BuildContext context) {
-    //Controller do provider
     var bottomNavigationController = Provider.of<BottomNavigationBarProviderController>(context);
 
     return Scaffold(
       extendBody: true,
       bottomNavigationBar: Container(
-        height: 70,
+        height: 64,
         decoration: const BoxDecoration(
-          color: Colors.white,
+          color: Constants.blackColor,
           borderRadius: BorderRadius.only(
-            topRight: Radius.circular(0),
-            topLeft: Radius.circular(0),
+            topLeft: Radius.circular(16),
+            topRight: Radius.circular(16),
+            bottomLeft: Radius.circular(16),
+            bottomRight: Radius.circular(16),
           ),
           boxShadow: [
             BoxShadow(
@@ -50,6 +49,7 @@ class _BottomNavigationBarControllerState extends State<BottomNavigationBarContr
             ),
           ],
         ),
+        margin: EdgeInsets.only(left: 16, right: 16, bottom: 16),
         child: ClipRRect(
           borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(0),
@@ -60,8 +60,8 @@ class _BottomNavigationBarControllerState extends State<BottomNavigationBarContr
             onTap: bottomNavigationController.onItemTapped,
             backgroundColor: Colors.transparent,
             elevation: 0,
-            selectedItemColor: Constants.blackColor,
-            selectedLabelStyle: GoogleFonts.raleway(
+            //selectedItemColor: Constants.whiteColor,
+            /*selectedLabelStyle: GoogleFonts.raleway(
               color: Constants.blackColor,
               fontSize: 12,
               fontWeight: FontWeight.w700,
@@ -71,111 +71,87 @@ class _BottomNavigationBarControllerState extends State<BottomNavigationBarContr
               fontSize: 12,
               fontWeight: FontWeight.w700,
             ),
-            showSelectedLabels: true,
-            showUnselectedLabels: true,
+            */
+            showSelectedLabels: false,
+            showUnselectedLabels: false,
             unselectedIconTheme: const IconThemeData(color: Constants.textFieldDisable),
             selectedIconTheme: const IconThemeData(color: Constants.primaryColor),
             unselectedItemColor: Constants.textFieldDisable,
-            iconSize: 18,
+            //iconSize: 24,
             type: BottomNavigationBarType.fixed,
             items: <BottomNavigationBarItem>[
               BottomNavigationBarItem(
-                icon: Padding(
-                  padding: const EdgeInsets.all(8),
-                  child: SizedBox(
-                    width: 20,
-                    height: 20,
-                    child: Icon(
-                      bottomNavigationController.selectedIndex == 0
-                          ? Icons.home
-                          : Icons.home_outlined,
-                      size: 20,
-                      color: bottomNavigationController.selectedIndex == 0
-                          ? Constants.blackColor
-                          : Constants.textFieldDisable,
-                    ),
-                  ),
-                ),
                 label: 'Home',
+                tooltip: 'Home',
+                icon: Icon(
+                  bottomNavigationController.selectedIndex == 0
+                      ? Icons.home
+                      : Icons.home_outlined,
+                  size: 24,
+                  color: bottomNavigationController.selectedIndex == 0
+                      ? Constants.whiteColor
+                      : Constants.textFieldDisable,
+                ),
               ),
               BottomNavigationBarItem(
-                icon: Padding(
-                  padding: const EdgeInsets.all(8),
-                  child: SizedBox(
-                    width: 20,
-                    height: 20,
-                    child: Icon(
-                      bottomNavigationController.selectedIndex == 1
-                          ? Icons.favorite
-                          : Icons.favorite_border,
-                      size: 20,
-                      color: bottomNavigationController.selectedIndex == 1
-                          ? Constants.blackColor
-                          : Constants.textFieldDisable,
-                    ),
-                  ),
-                ),
                 label: 'Favorite',
+                tooltip: 'Favorite',
+                icon: Icon(
+                  bottomNavigationController.selectedIndex == 1
+                      ? Icons.favorite
+                      : Icons.favorite_border,
+                  size: 24,
+                  color: bottomNavigationController.selectedIndex == 1
+                      ? Constants.whiteColor
+                      : Constants.textFieldDisable,
+                ),
               ),
               BottomNavigationBarItem(
-                icon: Padding(
-                  padding: const EdgeInsets.all(8),
-                  child: SizedBox(
-                    width: 20,
-                    height: 20,
-                    child: Icon(
-                      bottomNavigationController.selectedIndex == 2
-                          ? Icons.search
-                          : Icons.search_outlined,
-                      size: 20,
-                      color: bottomNavigationController.selectedIndex == 2
-                          ? Constants.blackColor
-                          : Constants.textFieldDisable,
-                    ),
-                  ),
-                ),
                 label: 'Search',
+                tooltip: 'Search',
+                icon: Icon(
+                  bottomNavigationController.selectedIndex == 2
+                      ? Icons.search
+                      : Icons.search_outlined,
+                  size: 24,
+                  color: bottomNavigationController.selectedIndex == 2
+                      ? Constants.whiteColor
+                      : Constants.textFieldDisable,
+                ),
               ),
               BottomNavigationBarItem(
-                icon: Padding(
-                  padding: const EdgeInsets.all(8),
-                  child: SizedBox(
-                    width: 20,
-                    height: 20,
-                    child: Icon(
-                      bottomNavigationController.selectedIndex == 3
-                          ? Icons.shopping_bag
-                          : Icons.shopping_bag_outlined,
-                      size: 20,
-                      color: bottomNavigationController.selectedIndex == 3
-                          ? Constants.blackColor
-                          : Constants.textFieldDisable,
-                    ),
-                  ),
-                ),
                 label: 'Bag',
+                tooltip: 'Bag',
+                icon: Icon(
+                  bottomNavigationController.selectedIndex == 3
+                      ? Icons.shopping_bag
+                      : Icons.shopping_bag_outlined,
+                  size: 24,
+                  color: bottomNavigationController.selectedIndex == 3
+                      ? Constants.whiteColor
+                      : Constants.textFieldDisable,
+                ),
               ),
               BottomNavigationBarItem(
-                icon: SizedBox(
-                  width: 20,
-                  height: 20,
-                  child: Icon(
-                    bottomNavigationController.selectedIndex == 4
-                        ? Icons.person
-                        : Icons.person_outline,
-                    size: 20,
-                    color: bottomNavigationController.selectedIndex == 4
-                        ? Constants.blackColor
-                        : Constants.textFieldDisable,
-                  ),
-                ),
                 label: 'Profile',
+                tooltip: 'Profile',
+                icon: Icon(
+                  bottomNavigationController.selectedIndex == 4
+                      ? Icons.person
+                      : Icons.person_outline,
+                  size: 24,
+                  color: bottomNavigationController.selectedIndex == 4
+                      ? Constants.whiteColor
+                      : Constants.textFieldDisable,
+                ),
               ),
             ],
           ),
         ),
       ),
-      body: bottomNavigationController.pages[bottomNavigationController.selectedIndex],
+      body: bottomNavigationController.pages[
+        bottomNavigationController.selectedIndex
+      ],
     );
   }
 }
