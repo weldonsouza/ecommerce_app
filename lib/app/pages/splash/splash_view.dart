@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../../core/route/navigation_service.dart';
 import '../../../core/utils/constants.dart';
@@ -44,18 +46,24 @@ class _SplashViewState extends State<SplashView> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const Icon(
+          SvgPicture.asset(
+            'assets/icons/headphone.svg',
+            color: Constants.whiteColor,
+            width: 96,
+            height: 96,
+          ),
+          /*const Icon(
             Icons.headphones,
             color: Constants.whiteColor,
             size: 60,
-          ),
+          ),*/
           SizedBox(width: Utils.mediaQuery(context, 1), height: 8),
-          const Text(
+          Text(
             'Headphones',
-            style: TextStyle(
+            style: GoogleFonts.poppins(
               color: Constants.whiteColor,
               fontSize: 32,
-              fontWeight: FontWeight.bold,
+              fontWeight: FontWeight.w500,
             ),
           ),
         ],

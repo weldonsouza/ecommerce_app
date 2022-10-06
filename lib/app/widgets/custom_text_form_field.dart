@@ -16,6 +16,8 @@ class CustomTextFormField extends StatefulWidget {
   final TextInputType? keyboardType;
   final List<TextInputFormatter>? inputFormatters;
   final bool? obscureText;
+  final double paddingLeft;
+  final double paddingRight;
   final String Function()? errorText;
   final Function(String)? onChanged;
 
@@ -32,6 +34,8 @@ class CustomTextFormField extends StatefulWidget {
     this.keyboardType = TextInputType.text,
     this.inputFormatters,
     this.obscureText = false,
+    this.paddingLeft = 16,
+    this.paddingRight = 16,
     this.errorText,
     this.onChanged,
   }) : super(key: key);
@@ -44,7 +48,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 16, right: 16),
+      padding: EdgeInsets.only(left: widget.paddingLeft, right: widget.paddingRight),
       child: TextFormField(
         controller: widget.controller,
         keyboardType: widget.keyboardType,

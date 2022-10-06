@@ -13,6 +13,8 @@ import 'pages/login/forgot_password_view.dart';
 import 'pages/login/login_signup_view.dart';
 import 'pages/login/login_view.dart';
 import 'pages/main/bottom_navigation_bar_controller.dart';
+import 'pages/profile/profile_edit_view.dart';
+import 'pages/profile/profile_view.dart';
 import 'pages/search/search_view.dart';
 import 'pages/splash/splash_view.dart';
 
@@ -53,6 +55,8 @@ class MainApp extends StatelessWidget {
           BagView.routeName: (BuildContext context) => const BagView(),
           SearchView.routeName: (BuildContext context) => const SearchView(),
           FavoriteView.routeName: (BuildContext context) => const FavoriteView(),
+          ProfileView.routeName: (BuildContext context) => const ProfileView(),
+          ProfileEditView.routeName: (BuildContext context) => const ProfileEditView(),
         },
       ),
     );
