@@ -3,6 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../core/utils/constants.dart';
+import '../../widgets/custom_app_bar.dart';
+import '../../widgets/custom_icon_button.dart';
 
 class SearchView extends StatefulWidget {
   const SearchView({Key? key}) : super(key: key);
@@ -23,19 +25,23 @@ class _SearchViewState extends State<SearchView> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Constants.whiteColor,
-      appBar: AppBar(
-        backgroundColor: Constants.transparent,
-        automaticallyImplyLeading: false,
-        elevation: 0,
-        title: Text(
-          'Search',
-          style: GoogleFonts.poppins(
-            color: Constants.blackColor,
-            fontSize: 28,
-            fontWeight: FontWeight.bold,
+      appBar: CustomAppBar(
+        context,
+        title: 'Search',
+        isBackButtonVisible: true,
+        widget: Container(
+          width: 40,
+          height: 40,
+          child: CustomIconButton(
+            widget: Icon(
+              Icons.tune_outlined,
+              size: 20,
+              color: Constants.blackColor,
+            ),
+            color: Constants.primaryColor.withOpacity(0.3),
+            onTap: () {},
           ),
         ),
-        systemOverlayStyle: SystemUiOverlayStyle.dark,
       ),
       body: Column(
         children: [],

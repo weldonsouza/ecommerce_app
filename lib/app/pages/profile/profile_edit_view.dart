@@ -1,7 +1,6 @@
 import 'package:ecommerce_app/app/widgets/custom_app_bar.dart';
 import 'package:ecommerce_app/core/utils/utils.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
@@ -124,7 +123,6 @@ class _ProfileEditViewState extends State<ProfileEditView> {
                       labelText: 'Full Name',
                       hint: 'Full Name',
                       keyboardType: TextInputType.text,
-                      fontWeight: FontWeight.w700,
                     ),
                     const SizedBox(height: 16),
                     Row(
@@ -136,7 +134,6 @@ class _ProfileEditViewState extends State<ProfileEditView> {
                             labelText: 'Gender',
                             hint: 'Gender',
                             keyboardType: TextInputType.emailAddress,
-                            fontWeight: FontWeight.w700,
                             paddingRight: 8,
                             //prefixIcon: const Icon(Icons.description),
                             //onChanged: (value) => _genderController.setLogin(value),
@@ -149,7 +146,6 @@ class _ProfileEditViewState extends State<ProfileEditView> {
                             labelText: 'Birthday',
                             hint: 'Birthday',
                             keyboardType: TextInputType.emailAddress,
-                            fontWeight: FontWeight.w700,
                             paddingLeft: 8,
                             //prefixIcon: const Icon(Icons.description),
                             //onChanged: (value) => loginController.setLogin(value),
@@ -163,7 +159,6 @@ class _ProfileEditViewState extends State<ProfileEditView> {
                       labelText: 'Phone number',
                       hint: 'Phone number',
                       keyboardType: TextInputType.text,
-                      fontWeight: FontWeight.w700,
                     ),
                     const SizedBox(height: 16),
                     CustomTextFormField(
@@ -171,7 +166,6 @@ class _ProfileEditViewState extends State<ProfileEditView> {
                       labelText: 'Email',
                       hint: 'Email',
                       keyboardType: TextInputType.text,
-                      fontWeight: FontWeight.w700,
                     ),
                   ],
                 ),

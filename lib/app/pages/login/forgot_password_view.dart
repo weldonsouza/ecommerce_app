@@ -43,8 +43,8 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
           'Forgot Password',
           style: GoogleFonts.poppins(
             color: Constants.blackColor,
-            fontSize: 28,
-            fontWeight: FontWeight.bold,
+            fontSize: 24,
+            fontWeight: FontWeight.w600,
           ),
         ),
         systemOverlayStyle: SystemUiOverlayStyle.dark,
@@ -72,7 +72,6 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
                 labelText: 'Email',
                 hint: 'Email',
                 keyboardType: TextInputType.emailAddress,
-                fontWeight: FontWeight.w700,
                 //prefixIcon: const Icon(Icons.description),
                 //onChanged: (value) => loginController.setLogin(value),
               ),

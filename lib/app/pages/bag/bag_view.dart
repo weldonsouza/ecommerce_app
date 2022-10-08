@@ -1,8 +1,9 @@
+import 'package:ecommerce_app/app/widgets/custom_empty_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../../../core/utils/constants.dart';
+import '../../../core/utils/utils.dart';
+import '../../widgets/custom_app_bar.dart';
 
 class BagView extends StatefulWidget {
   const BagView({Key? key}) : super(key: key);
@@ -23,22 +24,13 @@ class _BagViewState extends State<BagView> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Constants.whiteColor,
-      appBar: AppBar(
-        backgroundColor: Constants.transparent,
-        automaticallyImplyLeading: false,
-        elevation: 0,
-        title: Text(
-          'Bag',
-          style: GoogleFonts.poppins(
-            color: Constants.blackColor,
-            fontSize: 28,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        systemOverlayStyle: SystemUiOverlayStyle.dark,
-      ),
-      body: Column(
-        children: [],
+      appBar: CustomAppBar(context, title: 'My Bag', isBackButtonVisible: true),
+      body: CustomEmptyWidget(
+        icon: 'empty_bag',
+        title: 'My Bag is Empty!',
+        subTitle: 'Explore more and shortlist some items.',
+        titleButton: 'Start Shopping',
+        widthButton: Utils.mediaQuery(context, 0.4),
       ),
     );
   }

@@ -10,6 +10,7 @@ class CustomTextFormField extends StatefulWidget {
   final String? hint;
   final Color? textColorText;
   final Color? hintColorText;
+  final Color? borderColor;
   final Widget? prefixIcon;
   final Widget? suffixIcon;
   final FontWeight fontWeight;
@@ -28,9 +29,10 @@ class CustomTextFormField extends StatefulWidget {
     this.hint,
     this.prefixIcon,
     this.suffixIcon,
-    this.fontWeight = FontWeight.w400,
+    this.fontWeight = FontWeight.w500,
     this.textColorText = Constants.textField,
     this.hintColorText = Constants.textField,
+    this.borderColor = Constants.textField,
     this.keyboardType = TextInputType.text,
     this.inputFormatters,
     this.obscureText = false,
@@ -70,8 +72,16 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
             height: 60,
             child: widget.suffixIcon,
           ),
-          hintText: widget.hint ?? "",
+          hintText: widget.hint ?? '',
+          isDense: true,
           contentPadding: const EdgeInsets.all(12),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+            borderSide: BorderSide(
+              color: widget.borderColor ?? Colors.grey,
+              width: 1,
+            ),
+          ),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
           ),

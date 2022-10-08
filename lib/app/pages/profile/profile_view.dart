@@ -1,7 +1,6 @@
 import 'package:ecommerce_app/app/widgets/custom_app_bar.dart';
 import 'package:ecommerce_app/core/utils/utils.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
@@ -9,7 +8,7 @@ import '../../../core/route/navigation_service.dart';
 import '../../../core/utils/constants.dart';
 import '../../widgets/cliprrect_photo_widget.dart';
 import '../../widgets/custom_elevated_button.dart';
-import '../../widgets/custom_icon_button.dart';
+import '../login/login_view.dart';
 import '../main/bottom_navigation_bar_controller_view_model.dart';
 import 'profile_edit_view.dart';
 
@@ -29,21 +28,7 @@ class _ProfileViewState extends State<ProfileView> {
 
     return Scaffold(
       backgroundColor: Constants.whiteColor,
-      appBar: CustomAppBar(context, title: 'Profile', isBackButtonVisible: true, /*widget: Container(
-        width: 40,
-        height: 40,
-        child: CustomIconButton(
-          widget: SvgPicture.asset(
-            'assets/icons/edit.svg',
-            color: Constants.blackColor,
-            width: 16,
-            height: 16,
-          ),
-          color: Constants.primaryColor.withOpacity(0.3),
-          onTap: () {},
-        ),
-      ),*/
-      ),
+      appBar: CustomAppBar(context, title: 'Profile', isBackButtonVisible: true),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -73,7 +58,7 @@ class _ProfileViewState extends State<ProfileView> {
               ),
             ),
             Text(
-              'email@gmail.com',
+              '@rafael',
               style: GoogleFonts.poppins(
                 color: Constants.textColor,
                 fontSize: 14,
@@ -90,7 +75,7 @@ class _ProfileViewState extends State<ProfileView> {
                   navigationService.push(ProfileEditView.routeName, arguments: {
                     'photo': 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
                     'name': 'Rafael Silva',
-                    'email': 'email@gmail.com',
+                    'email': '@rafael',
                   });
                 },
               ),
@@ -101,20 +86,22 @@ class _ProfileViewState extends State<ProfileView> {
               color: Constants.textFieldDisable,
               margin: EdgeInsets.only(left: 16, right: 16, bottom: 8),
             ),
-            _cardView(Icons.settings_outlined, 'Settings'),
-            _cardView(Icons.assignment_outlined, 'My Orders'),
-            _cardView(Icons.contact_mail_outlined, 'Address'),
-            _cardView(Icons.lock_outline, 'Change Password'),
+            _cardView(Icons.settings_outlined, 'Settings', () {}),
+            _cardView(Icons.assignment_outlined, 'My Orders', () {}),
+            _cardView(Icons.contact_mail_outlined, 'Address', () {}),
+            _cardView(Icons.lock_outline, 'Change Password', () {}),
             Container(
               width: Utils.mediaQuery(context, 1),
               height: 1,
               color: Constants.textFieldDisable,
               margin: EdgeInsets.only(top: 8, left: 16, right: 16, bottom: 8),
             ),
-            _cardView(Icons.help_outline, 'Help & Support'),
-            _cardView(Icons.lock_outline, 'Privacy Policy'),
-            _cardView(Icons.lock_outline, 'Terms of Use'),
-            _cardView(Icons.logout, 'Logout'),
+            _cardView(Icons.help_outline, 'Help & Support', () {}),
+            _cardView(Icons.lock_outline, 'Privacy Policy', () {}),
+            _cardView(Icons.lock_outline, 'Terms of Use', () {}),
+            _cardView(Icons.logout, 'Logout', () {
+              navigationService.pushReplacement(LoginView.routeName);
+            }),
             SizedBox(height: 96),
           ],
         ),
@@ -122,11 +109,11 @@ class _ProfileViewState extends State<ProfileView> {
     );
   }
 
-  _cardView(icon, title) {
+  _cardView(icon, title, onTap) {
     return Padding(
       padding: const EdgeInsets.only(left: 16, right: 16),
       child: InkWell(
-        onTap: (){},
+        onTap: onTap,
         child: Padding(
           padding: const EdgeInsets.only(top: 6, bottom: 6),
           child: Row(

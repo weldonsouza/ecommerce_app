@@ -71,7 +71,6 @@ class _LoginViewState extends State<LoginView> {
                 labelText: 'Email',
                 hint: 'Email',
                 keyboardType: TextInputType.emailAddress,
-                fontWeight: FontWeight.w700,
                 //prefixIcon: const Icon(Icons.description),
                 onChanged: (value) => loginController.setLogin(value),
               ),
@@ -81,7 +80,6 @@ class _LoginViewState extends State<LoginView> {
                 labelText: 'Password',
                 hint: 'Password',
                 keyboardType: TextInputType.text,
-                fontWeight: FontWeight.w700,
                 obscureText: visibility,
                 suffixIcon: IconButton(
                   padding: EdgeInsets.zero,
@@ -111,7 +109,7 @@ class _LoginViewState extends State<LoginView> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Transform.scale(
-                          scale: 0.6,
+                          scale: 0.5,
                           child: CupertinoSwitch(
                             value: toggleValue,
                             activeColor: Constants.successSnackBarColor,
@@ -129,7 +127,7 @@ class _LoginViewState extends State<LoginView> {
                           'Remember',
                           style: GoogleFonts.poppins(
                             color: Constants.blackColor,
-                            fontSize: 14,
+                            fontSize: 12,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -143,7 +141,7 @@ class _LoginViewState extends State<LoginView> {
                         'Forgot password?',
                         style: GoogleFonts.poppins(
                           color: Constants.errorSnackBarColor,
-                          fontSize: 14,
+                          fontSize: 12,
                           fontWeight: FontWeight.w500,
                         ),
                       ),

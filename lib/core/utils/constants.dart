@@ -29,4 +29,5 @@ class Constants {
   static const Color textColor = Color(0xff9D9D9D);
   static const Color textField = Color(0xff7C757F);
   static const Color textFieldDisable = Color(0xffc9c9c9);
+  static const Color orange = Color(0xffF7C07B);
 }

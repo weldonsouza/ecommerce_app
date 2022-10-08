@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
@@ -45,7 +46,7 @@ AppBar CustomAppBar(BuildContext context, {required String title, required bool 
           style: GoogleFonts.poppins(
             color: Constants.blackColor,
             fontSize: 24,
-            fontWeight: FontWeight.bold,
+            fontWeight: FontWeight.w600,
           ),
         ),
         widget ?? SizedBox(width: 40),

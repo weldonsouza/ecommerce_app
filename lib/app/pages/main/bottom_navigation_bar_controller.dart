@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -32,7 +33,7 @@ class _BottomNavigationBarControllerState
     return Scaffold(
       extendBody: true,
       bottomNavigationBar: Container(
-        height: 64,
+        height: 60,
         decoration: const BoxDecoration(
           color: Constants.blackColor,
           borderRadius: BorderRadius.only(
@@ -60,34 +61,22 @@ class _BottomNavigationBarControllerState
             onTap: bottomNavigationController.onItemTapped,
             backgroundColor: Colors.transparent,
             elevation: 0,
-            //selectedItemColor: Constants.whiteColor,
-            /*selectedLabelStyle: GoogleFonts.raleway(
-              color: Constants.blackColor,
-              fontSize: 12,
-              fontWeight: FontWeight.w700,
-            ),
-            unselectedLabelStyle: GoogleFonts.raleway(
-              color: Constants.textFieldDisable,
-              fontSize: 12,
-              fontWeight: FontWeight.w700,
-            ),
-            */
             showSelectedLabels: false,
             showUnselectedLabels: false,
             unselectedIconTheme: const IconThemeData(color: Constants.textFieldDisable),
             selectedIconTheme: const IconThemeData(color: Constants.primaryColor),
             unselectedItemColor: Constants.textFieldDisable,
-            //iconSize: 24,
             type: BottomNavigationBarType.fixed,
             items: <BottomNavigationBarItem>[
               BottomNavigationBarItem(
                 label: 'Home',
                 tooltip: 'Home',
-                icon: Icon(
+                icon: SvgPicture.asset(
                   bottomNavigationController.selectedIndex == 0
-                      ? Icons.home
-                      : Icons.home_outlined,
-                  size: 24,
+                      ? 'assets/icons/home.svg'
+                      : 'assets/icons/home_outlined.svg',
+                  width: 24,
+                  height: 24,
                   color: bottomNavigationController.selectedIndex == 0
                       ? Constants.whiteColor
                       : Constants.textFieldDisable,
@@ -96,11 +85,12 @@ class _BottomNavigationBarControllerState
               BottomNavigationBarItem(
                 label: 'Favorite',
                 tooltip: 'Favorite',
-                icon: Icon(
+                icon: SvgPicture.asset(
                   bottomNavigationController.selectedIndex == 1
-                      ? Icons.favorite
-                      : Icons.favorite_border,
-                  size: 24,
+                      ? 'assets/icons/favorite.svg'
+                      : 'assets/icons/favorite_outlined.svg',
+                  width: 24,
+                  height: 24,
                   color: bottomNavigationController.selectedIndex == 1
                       ? Constants.whiteColor
                       : Constants.textFieldDisable,
@@ -109,11 +99,12 @@ class _BottomNavigationBarControllerState
               BottomNavigationBarItem(
                 label: 'Search',
                 tooltip: 'Search',
-                icon: Icon(
+                icon: SvgPicture.asset(
                   bottomNavigationController.selectedIndex == 2
-                      ? Icons.search
-                      : Icons.search_outlined,
-                  size: 24,
+                      ? 'assets/icons/search.svg'
+                      : 'assets/icons/search_outlined.svg',
+                  width: 24,
+                  height: 24,
                   color: bottomNavigationController.selectedIndex == 2
                       ? Constants.whiteColor
                       : Constants.textFieldDisable,
@@ -122,11 +113,12 @@ class _BottomNavigationBarControllerState
               BottomNavigationBarItem(
                 label: 'Bag',
                 tooltip: 'Bag',
-                icon: Icon(
+                icon: SvgPicture.asset(
                   bottomNavigationController.selectedIndex == 3
-                      ? Icons.shopping_bag
-                      : Icons.shopping_bag_outlined,
-                  size: 24,
+                      ? 'assets/icons/shopping_bag.svg'
+                      : 'assets/icons/shopping_bag_outlined.svg',
+                  width: 24,
+                  height: 24,
                   color: bottomNavigationController.selectedIndex == 3
                       ? Constants.whiteColor
                       : Constants.textFieldDisable,
@@ -135,11 +127,12 @@ class _BottomNavigationBarControllerState
               BottomNavigationBarItem(
                 label: 'Profile',
                 tooltip: 'Profile',
-                icon: Icon(
+                icon: SvgPicture.asset(
                   bottomNavigationController.selectedIndex == 4
-                      ? Icons.person
-                      : Icons.person_outline,
-                  size: 24,
+                      ? 'assets/icons/person.svg'
+                      : 'assets/icons/person_outlined.svg',
+                  width: 24,
+                  height: 24,
                   color: bottomNavigationController.selectedIndex == 4
                       ? Constants.whiteColor
                       : Constants.textFieldDisable,
