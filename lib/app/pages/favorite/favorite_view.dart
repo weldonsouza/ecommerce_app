@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
 import '../../../core/route/navigation_service.dart';
@@ -41,9 +40,10 @@ class _FavoriteViewState extends State<FavoriteView> {
           width: 40,
           height: 40,
           child: CustomIconButton(
-            widget: Icon(
-              Icons.shopping_bag,
-              size: 20,
+            widget: SvgPicture.asset(
+              'assets/icons/shopping_bag.svg',
+              width: 20,
+              height: 20,
               color: Constants.blackColor,
             ),
             color: Constants.primaryColor.withOpacity(0.3),

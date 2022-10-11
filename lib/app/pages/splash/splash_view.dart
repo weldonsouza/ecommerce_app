@@ -41,27 +41,22 @@ class _SplashViewState extends State<SplashView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Constants.primaryColor,
+      backgroundColor: Constants.whiteColor,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           SvgPicture.asset(
             'assets/icons/headphone.svg',
-            color: Constants.whiteColor,
+            color: Constants.blackColor,
             width: 96,
             height: 96,
           ),
-          /*const Icon(
-            Icons.headphones,
-            color: Constants.whiteColor,
-            size: 60,
-          ),*/
           SizedBox(width: Utils.mediaQuery(context, 1), height: 8),
           Text(
             'Headphones',
             style: GoogleFonts.poppins(
-              color: Constants.whiteColor,
+              color: Constants.blackColor,
               fontSize: 32,
               fontWeight: FontWeight.w500,
             ),

@@ -16,6 +16,8 @@ class CustomElevatedButton extends StatelessWidget {
   final double borderRadius;
   final double textSize;
   final double paddingButton;
+  final double paddingButtonLeft;
+  final double paddingButtonRight;
   final FontWeight fontWeight;
 
   const CustomElevatedButton({
@@ -31,13 +33,15 @@ class CustomElevatedButton extends StatelessWidget {
     this.borderRadius = 12,
     this.textSize = 18,
     this.paddingButton = 5,
+    this.paddingButtonLeft = 16,
+    this.paddingButtonRight = 16,
     this.fontWeight = FontWeight.w500,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 16, right: 16),
+      padding: EdgeInsets.only(left: paddingButtonLeft, right: paddingButtonRight),
       child: ElevatedButton(
         style: ButtonStyle(
           padding: MaterialStateProperty.resolveWith<EdgeInsetsGeometry>(

@@ -114,7 +114,7 @@ class _HomeViewState extends State<HomeView> {
                 children: [
                   homeController.promotionalBanner.isNotEmpty
                       ? Container(
-                          height: 128,
+                          height: 140,
                           margin: const EdgeInsets.only(top: 16),
                           child: ListPromotionalBannerWidget(
                             listBanners: homeController.promotionalBanner,

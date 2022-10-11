@@ -2,7 +2,7 @@ class ProductModel {
   final String? id;
   final String? name;
   final String? description;
-  final int? price;
+  final double? price;
   final List<String>? images;
 
   ProductModel({
@@ -17,7 +17,7 @@ class ProductModel {
       : id = json['_id'] as String?,
         name = json['name'] as String?,
         description = json['description'] as String?,
-        price = json['price'] as int?,
+        price = json['price'] as double?,
         images =
             (json['images'] as List?)?.map((dynamic e) => e as String).toList();
 

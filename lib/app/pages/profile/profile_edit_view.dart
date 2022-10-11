@@ -1,6 +1,7 @@
 import 'package:ecommerce_app/app/widgets/custom_app_bar.dart';
 import 'package:ecommerce_app/core/utils/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
@@ -82,10 +83,11 @@ class _ProfileEditViewState extends State<ProfileEditView> {
                               borderRadius: BorderRadius.circular(100),
                             ),
                             child: CustomIconButton(
-                              widget: Icon(
-                                Icons.camera_alt_outlined,
+                              widget: SvgPicture.asset(
+                                'assets/icons/camera.svg',
+                                width: 12,
+                                height: 12,
                                 color: Constants.whiteColor,
-                                size: 12,
                               ),
                               color: Constants.blackColor,
                               borderRadius: 100,

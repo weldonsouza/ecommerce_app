@@ -1,6 +1,7 @@
 import 'package:ecommerce_app/app/widgets/custom_app_bar.dart';
 import 'package:ecommerce_app/core/utils/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
@@ -86,20 +87,20 @@ class _ProfileViewState extends State<ProfileView> {
               color: Constants.textFieldDisable,
               margin: EdgeInsets.only(left: 16, right: 16, bottom: 8),
             ),
-            _cardView(Icons.settings_outlined, 'Settings', () {}),
-            _cardView(Icons.assignment_outlined, 'My Orders', () {}),
-            _cardView(Icons.contact_mail_outlined, 'Address', () {}),
-            _cardView(Icons.lock_outline, 'Change Password', () {}),
+            _cardView(null, 'settings', 'Settings', () {}),
+            _cardView(Icons.assignment_outlined, '', 'My Orders', () {}),
+            _cardView(null, 'alternate_map', 'Address', () {}),
+            _cardView(Icons.lock_outline, '', 'Change Password', () {}),
             Container(
               width: Utils.mediaQuery(context, 1),
               height: 1,
               color: Constants.textFieldDisable,
               margin: EdgeInsets.only(top: 8, left: 16, right: 16, bottom: 8),
             ),
-            _cardView(Icons.help_outline, 'Help & Support', () {}),
-            _cardView(Icons.lock_outline, 'Privacy Policy', () {}),
-            _cardView(Icons.lock_outline, 'Terms of Use', () {}),
-            _cardView(Icons.logout, 'Logout', () {
+            _cardView(Icons.help_outline, '', 'Help & Support', () {}),
+            _cardView(Icons.lock_outline, '', 'Privacy Policy', () {}),
+            _cardView(Icons.lock_outline, '', 'Terms of Use', () {}),
+            _cardView(Icons.logout, '', 'Logout', () {
               navigationService.pushReplacement(LoginView.routeName);
             }),
             SizedBox(height: 96),
@@ -109,7 +110,7 @@ class _ProfileViewState extends State<ProfileView> {
     );
   }
 
-  _cardView(icon, title, onTap) {
+  _cardView(icon, iconSvg, title, onTap) {
     return Padding(
       padding: const EdgeInsets.only(left: 16, right: 16),
       child: InkWell(
@@ -121,10 +122,17 @@ class _ProfileViewState extends State<ProfileView> {
             children: [
               Row(
                 children: [
-                  Icon(
-                    icon,
-                    size: 24,
-                  ),
+                  icon != null
+                      ? Icon(
+                          icon,
+                          size: 24,
+                        )
+                      : SvgPicture.asset(
+                          'assets/icons/$iconSvg.svg',
+                          width: 24,
+                          height: 24,
+                          color: Constants.blackColor,
+                        ),
                   SizedBox(width: 12),
                   Text(
                     title,

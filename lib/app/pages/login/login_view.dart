@@ -36,7 +36,6 @@ class _LoginViewState extends State<LoginView> {
 
   @override
   Widget build(BuildContext context) {
-    //Controller do provider
     var loginController = Provider.of<LoginProviderController>(context);
 
     return Scaffold(

@@ -18,7 +18,7 @@ class ListProductsWidget extends StatelessWidget {
         crossAxisCount: 2,
         crossAxisSpacing: 8,
         mainAxisSpacing: 8,
-        mainAxisExtent: 170,
+        mainAxisExtent: 290,
       ),
       physics: const BouncingScrollPhysics(),
       padding: EdgeInsets.only(left: 16, right: 16, bottom: 100),
