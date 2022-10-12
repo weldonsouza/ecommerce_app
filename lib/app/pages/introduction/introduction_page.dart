@@ -3,18 +3,18 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../../core/route/navigation_service.dart';
 import '../../../core/utils/constants.dart';
-import '../login/login_view.dart';
+import '../login/login_page.dart';
 
-class IntroductionView extends StatefulWidget {
-  const IntroductionView({Key? key}) : super(key: key);
+class IntroductionPage extends StatefulWidget {
+  const IntroductionPage({Key? key}) : super(key: key);
 
   static String get routeName => '/introduction';
 
   @override
-  State<IntroductionView> createState() => _IntroductionViewState();
+  State<IntroductionPage> createState() => _IntroductionPageState();
 }
 
-class _IntroductionViewState extends State<IntroductionView> {
+class _IntroductionPageState extends State<IntroductionPage> {
   final controller = PageController(initialPage: 0, viewportFraction: 1, keepPage: true);
   String text = 'Next';
 
@@ -185,7 +185,7 @@ class _IntroductionViewState extends State<IntroductionView> {
                       controller.nextPage(duration: const Duration(milliseconds: 300), curve: Curves.ease);
 
                       if(text == 'Get started') {
-                        navigationService.pushReplacement(LoginView.routeName);
+                        navigationService.pushReplacement(LoginPage.routeName);
                       }
                     },
                     child: Row(

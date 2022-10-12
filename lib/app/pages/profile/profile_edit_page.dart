@@ -10,18 +10,18 @@ import '../../widgets/cliprrect_photo_widget.dart';
 import '../../widgets/custom_elevated_button.dart';
 import '../../widgets/custom_icon_button.dart';
 import '../../widgets/custom_text_form_field.dart';
-import '../main/bottom_navigation_bar_controller_view_model.dart';
+import '../main/bottom_navigation_bar_controller.dart';
 
-class ProfileEditView extends StatefulWidget {
-  const ProfileEditView({Key? key}) : super(key: key);
+class ProfileEditPage extends StatefulWidget {
+  const ProfileEditPage({Key? key}) : super(key: key);
 
   static String get routeName => '/profile_edit';
 
   @override
-  State<ProfileEditView> createState() => _ProfileEditViewState();
+  State<ProfileEditPage> createState() => _ProfileEditPageState();
 }
 
-class _ProfileEditViewState extends State<ProfileEditView> {
+class _ProfileEditPageState extends State<ProfileEditPage> {
   final TextEditingController _fullNameController = TextEditingController();
   final TextEditingController _genderController = TextEditingController();
   final TextEditingController _birthdayController = TextEditingController();
@@ -30,7 +30,7 @@ class _ProfileEditViewState extends State<ProfileEditView> {
 
   @override
   Widget build(BuildContext context) {
-    var bottomNavigationController = Provider.of<BottomNavigationBarProviderController>(context);
+    var bottomNavigationController = Provider.of<BottomNavigationBarController>(context);
     Map args = ModalRoute.of(context)!.settings.arguments as Map;
 
     return Scaffold(

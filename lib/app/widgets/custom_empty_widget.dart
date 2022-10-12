@@ -6,8 +6,8 @@ import 'package:provider/provider.dart';
 import '../../core/route/navigation_service.dart';
 import '../../core/utils/constants.dart';
 import '../../core/utils/utils.dart';
+import '../pages/main/bottom_navigation_bar_controller_page.dart';
 import '../pages/main/bottom_navigation_bar_controller.dart';
-import '../pages/main/bottom_navigation_bar_controller_view_model.dart';
 import 'custom_elevated_button.dart';
 
 class CustomEmptyWidget extends StatelessWidget {
@@ -28,7 +28,7 @@ class CustomEmptyWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var bottomNavigationController = Provider.of<BottomNavigationBarProviderController>(context);
+    var bottomNavigationController = Provider.of<BottomNavigationBarController>(context);
 
     return Center(
       child: Column(
@@ -68,7 +68,7 @@ class CustomEmptyWidget extends StatelessWidget {
               height: 34,
               onTap: () {
                 bottomNavigationController.onItemTapped(0);
-                navigationService.pushReplacement(BottomNavigationBarController.routeName);
+                navigationService.pushReplacement(BottomNavigationBarControllerPage.routeName);
               },
             ),
           ),

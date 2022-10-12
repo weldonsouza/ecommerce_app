@@ -9,23 +9,23 @@ import '../../../core/route/navigation_service.dart';
 import '../../../core/utils/constants.dart';
 import '../../widgets/cliprrect_photo_widget.dart';
 import '../../widgets/custom_elevated_button.dart';
-import '../login/login_view.dart';
-import '../main/bottom_navigation_bar_controller_view_model.dart';
-import 'profile_edit_view.dart';
+import '../login/login_page.dart';
+import '../main/bottom_navigation_bar_controller.dart';
+import 'profile_edit_page.dart';
 
-class ProfileView extends StatefulWidget {
-  const ProfileView({Key? key}) : super(key: key);
+class ProfilePage extends StatefulWidget {
+  const ProfilePage({Key? key}) : super(key: key);
 
   static String get routeName => '/profile';
 
   @override
-  State<ProfileView> createState() => _ProfileViewState();
+  State<ProfilePage> createState() => _ProfilePageState();
 }
 
-class _ProfileViewState extends State<ProfileView> {
+class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
-    var bottomNavigationController = Provider.of<BottomNavigationBarProviderController>(context);
+    var bottomNavigationController = Provider.of<BottomNavigationBarController>(context);
 
     return Scaffold(
       backgroundColor: Constants.whiteColor,
@@ -73,7 +73,7 @@ class _ProfileViewState extends State<ProfileView> {
                 width: Utils.mediaQuery(context, 0.34),
                 height: 34,
                 onTap: () {
-                  navigationService.push(ProfileEditView.routeName, arguments: {
+                  navigationService.push(ProfileEditPage.routeName, arguments: {
                     'photo': 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
                     'name': 'Rafael Silva',
                     'email': '@rafael',
@@ -101,7 +101,7 @@ class _ProfileViewState extends State<ProfileView> {
             _cardView(Icons.lock_outline, '', 'Privacy Policy', () {}),
             _cardView(Icons.lock_outline, '', 'Terms of Use', () {}),
             _cardView(Icons.logout, '', 'Logout', () {
-              navigationService.pushReplacement(LoginView.routeName);
+              navigationService.pushReplacement(LoginPage.routeName);
             }),
             SizedBox(height: 96),
           ],

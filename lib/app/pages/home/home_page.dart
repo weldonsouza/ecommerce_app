@@ -6,20 +6,21 @@ import 'package:provider/provider.dart';
 import '../../../core/utils/constants.dart';
 import '../../../core/utils/utils.dart';
 import '../../widgets/custom_text_form_field.dart';
-import '../../widgets/list_items_services_widget.dart';
-import '../../widgets/list_promotional_banner_widget.dart';
-import 'home_view_model.dart';
+import '../favorite/favorite_controller.dart';
+import 'components/list_items_services_widget.dart';
+import 'components/list_promotional_banner_widget.dart';
+import 'home_controller.dart';
 
-class HomeView extends StatefulWidget {
-  const HomeView({Key? key}) : super(key: key);
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
 
   static String get routeName => '/home';
 
   @override
-  State<HomeView> createState() => _HomeViewState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _HomeViewState extends State<HomeView> {
+class _HomePageState extends State<HomePage> {
   final TextEditingController _searchController = TextEditingController();
 
   @override
@@ -27,13 +28,14 @@ class _HomeViewState extends State<HomeView> {
     super.initState();
 
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      Provider.of<HomeProviderController>(context, listen: false).init();
+      Provider.of<FavoriteController>(context, listen: false).listFavoriteProducts.clear();
+      Provider.of<HomeController>(context, listen: false).init();
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    var homeController = Provider.of<HomeProviderController>(context);
+    var homeController = Provider.of<HomeController>(context);
 
     return Scaffold(
       backgroundColor: Constants.whiteColor,

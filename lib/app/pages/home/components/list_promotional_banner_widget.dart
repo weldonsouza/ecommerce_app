@@ -4,9 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../core/utils/constants.dart';
-import '../../core/utils/utils.dart';
-import '../../domain/models/products/promo_model.dart';
+import '../../../../core/utils/constants.dart';
+import '../../../../domain/models/products/promo_model.dart';
 
 class ListPromotionalBannerWidget extends StatefulWidget {
   final List<PromoModel>? listBanners;

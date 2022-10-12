@@ -7,19 +7,19 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../core/route/navigation_service.dart';
 import '../../../core/utils/constants.dart';
 import '../../../core/utils/utils.dart';
-import '../introduction/introduction_view.dart';
-import '../login/login_view.dart';
+import '../introduction/introduction_page.dart';
+import '../login/login_page.dart';
 
-class SplashView extends StatefulWidget {
-  const SplashView({super.key});
+class SplashPage extends StatefulWidget {
+  const SplashPage({super.key});
 
   static String get routeName => '/splash';
 
   @override
-  State<SplashView> createState() => _SplashViewState();
+  State<SplashPage> createState() => _SplashPageState();
 }
 
-class _SplashViewState extends State<SplashView> {
+class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
@@ -31,9 +31,9 @@ class _SplashViewState extends State<SplashView> {
 
     Timer(const Duration(seconds: 3), () {
       if(view == false){
-        navigationService.pushReplacement(IntroductionView.routeName);
+        navigationService.pushReplacement(IntroductionPage.routeName);
       } else {
-        navigationService.pushReplacement(LoginView.routeName);
+        navigationService.pushReplacement(LoginPage.routeName);
       }
     });
   }

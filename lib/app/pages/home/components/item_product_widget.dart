@@ -2,13 +2,15 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
-import '../../core/utils/constants.dart';
-import '../../core/utils/utils.dart';
-import '../../domain/models/products/product_model.dart';
-import 'custom_icon_button.dart';
+import '../../../../core/utils/constants.dart';
+import '../../../../core/utils/utils.dart';
+import '../../../../domain/models/products/product_model.dart';
+import '../../../widgets/custom_icon_button.dart';
+import '../../favorite/favorite_controller.dart';
 
-class ProductItemWidget extends StatelessWidget {
+class ProductItemWidget extends StatefulWidget {
   final ProductModel item;
 
   const ProductItemWidget({
@@ -17,9 +19,34 @@ class ProductItemWidget extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<ProductItemWidget> createState() => _ProductItemWidgetState();
+}
+
+class _ProductItemWidgetState extends State<ProductItemWidget> {
+  bool favorite = false;
+
+  @override
+  void initState() {
+    super.initState();
+
+    if (widget.item.favorite == true) {
+      favorite = true;
+      WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+        Provider.of<FavoriteController>(context, listen: false).setFavoriteProducts(widget.item);
+      });
+    } else {
+      favorite = false;
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
+    var favoriteController = Provider.of<FavoriteController>(context);
+
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+
+      },
       child: Column(
         children: [
           Stack(
@@ -36,7 +63,7 @@ class ProductItemWidget extends StatelessWidget {
                     ClipRRect(
                       borderRadius: const BorderRadius.all(Radius.circular(12)),
                       child: CachedNetworkImage(
-                        imageUrl: item.images![0],
+                        imageUrl: widget.item.images![0],
                         width: double.infinity,
                         height: 230,
                         fit: BoxFit.contain,
@@ -73,10 +100,20 @@ class ProductItemWidget extends StatelessWidget {
                     borderRadius: 100,
                     color: Constants.transparent,
                     widget: SvgPicture.asset(
-                      'assets/icons/favorite_outlined.svg',
+                      favorite == true ? 'assets/icons/favorite.svg' : 'assets/icons/favorite_outlined.svg',
                       color: Constants.blackColor,
                     ),
-                    onTap: () {},
+                    onTap: () {
+                      setState(() {
+                        favorite = !favorite;
+                      });
+
+                      if (favorite == true) {
+                        favoriteController.setFavoriteProducts(widget.item);
+                      } else {
+                        favoriteController.removeFavoriteProductsId(widget.item.id!);
+                      }
+                    },
                   ),
                 ),
               ),
@@ -88,7 +125,7 @@ class ProductItemWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  '${item.name}',
+                  '${widget.item.name}',
                   overflow: TextOverflow.ellipsis,
                   style: GoogleFonts.poppins(
                     fontSize: 16,
@@ -98,7 +135,7 @@ class ProductItemWidget extends StatelessWidget {
                 ),
                 SizedBox(width: double.infinity),
                 Text(
-                  '\$ ${formatFraction.format(item.price)}',
+                  '\$ ${formatFraction.format(widget.item.price)}',
                   overflow: TextOverflow.ellipsis,
                   style: GoogleFonts.raleway(
                     color: Constants.blackColor,

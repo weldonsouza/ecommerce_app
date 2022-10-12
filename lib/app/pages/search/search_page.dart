@@ -1,21 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../../../core/utils/constants.dart';
 import '../../widgets/custom_app_bar.dart';
 import '../../widgets/custom_icon_button.dart';
 
-class SearchView extends StatefulWidget {
-  const SearchView({Key? key}) : super(key: key);
+class SearchPage extends StatefulWidget {
+  const SearchPage({Key? key}) : super(key: key);
 
   static String get routeName => '/search';
 
   @override
-  State<SearchView> createState() => _SearchViewState();
+  State<SearchPage> createState() => _SearchPageState();
 }
 
-class _SearchViewState extends State<SearchView> {
+class _SearchPageState extends State<SearchPage> {
   @override
   void initState() {
     super.initState();

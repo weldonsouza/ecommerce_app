@@ -1,24 +1,21 @@
-import 'package:ecommerce_app/app/pages/login/login_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../core/route/navigation_service.dart';
 import '../../../core/utils/constants.dart';
-import '../../../core/utils/utils.dart';
 import '../../widgets/custom_elevated_button.dart';
 import '../../widgets/custom_text_form_field.dart';
 
-class ForgotPasswordView extends StatefulWidget {
-  const ForgotPasswordView({Key? key}) : super(key: key);
+class ForgotPasswordPage extends StatefulWidget {
+  const ForgotPasswordPage({Key? key}) : super(key: key);
 
   static String get routeName => '/forgot_pass';
 
   @override
-  State<ForgotPasswordView> createState() => _ForgotPasswordViewState();
+  State<ForgotPasswordPage> createState() => _ForgotPasswordPageState();
 }
 
-class _ForgotPasswordViewState extends State<ForgotPasswordView> {
+class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   final TextEditingController _loginController = TextEditingController();
 
   bool visibility = false;

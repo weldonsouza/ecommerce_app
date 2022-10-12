@@ -1,4 +1,5 @@
-import 'package:ecommerce_app/app/pages/login/login_view.dart';
+import 'package:ecommerce_app/app/widgets/custom_elevated_button.dart';
+import 'package:ecommerce_app/app/widgets/custom_text_form_field.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -7,27 +8,25 @@ import 'package:provider/provider.dart';
 
 import '../../../core/route/navigation_service.dart';
 import '../../../core/utils/constants.dart';
-import '../../../core/utils/utils.dart';
-import '../../widgets/custom_elevated_button.dart';
-import '../../widgets/custom_text_form_field.dart';
-import '../home/home_view.dart';
-import 'login_view_model.dart';
+import '../main/bottom_navigation_bar_controller_page.dart';
+import 'forgot_password_page.dart';
+import 'login_signup_page.dart';
+import 'login_controller.dart';
 
-class LoginSignUpView extends StatefulWidget {
-  const LoginSignUpView({Key? key}) : super(key: key);
+class LoginPage extends StatefulWidget {
+  const LoginPage({Key? key}) : super(key: key);
 
-  static String get routeName => '/loginSignUp';
+  static String get routeName => '/login';
 
   @override
-  State<LoginSignUpView> createState() => _LoginSignUpViewState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class _LoginSignUpViewState extends State<LoginSignUpView> with TickerProviderStateMixin {
-  final TextEditingController _firstNameController = TextEditingController();
-  final TextEditingController _lastNameController = TextEditingController();
+class _LoginPageState extends State<LoginPage> {
   final TextEditingController _loginController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
+  bool toggleValue = false;
   bool visibility = true;
 
   @override
@@ -37,8 +36,7 @@ class _LoginSignUpViewState extends State<LoginSignUpView> with TickerProviderSt
 
   @override
   Widget build(BuildContext context) {
-    //Controller do provider
-    var loginController = Provider.of<LoginProviderController>(context);
+    var loginController = Provider.of<LoginController>(context);
 
     return Scaffold(
       backgroundColor: Constants.whiteColor,
@@ -49,7 +47,7 @@ class _LoginSignUpViewState extends State<LoginSignUpView> with TickerProviderSt
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                'Create Account',
+                'Welcome',
                 style: GoogleFonts.poppins(
                   color: Constants.blackColor,
                   fontSize: 28,
@@ -59,7 +57,7 @@ class _LoginSignUpViewState extends State<LoginSignUpView> with TickerProviderSt
               Padding(
                 padding: const EdgeInsets.only(bottom: 32),
                 child: Text(
-                  'Enter your credentials to continue',
+                  'Sign in to continue!',
                   style: GoogleFonts.poppins(
                     color: Constants.textColor,
                     fontSize: 16,
@@ -67,24 +65,6 @@ class _LoginSignUpViewState extends State<LoginSignUpView> with TickerProviderSt
                   ),
                 ),
               ),
-              CustomTextFormField(
-                controller: _firstNameController,
-                labelText: 'First Name',
-                hint: 'First Name',
-                keyboardType: TextInputType.text,
-                //prefixIcon: const Icon(Icons.description),
-                //onChanged: (value) => loginController.setLogin(value),
-              ),
-              const SizedBox(height: 12),
-              CustomTextFormField(
-                controller: _lastNameController,
-                labelText: 'Last Name',
-                hint: 'Last Name',
-                keyboardType: TextInputType.text,
-                //prefixIcon: const Icon(Icons.description),
-                //onChanged: (value) => loginController.setLogin(value),
-              ),
-              const SizedBox(height: 12),
               CustomTextFormField(
                 controller: _loginController,
                 labelText: 'Email',
@@ -117,24 +97,74 @@ class _LoginSignUpViewState extends State<LoginSignUpView> with TickerProviderSt
                 //value: loginController.birthdate,
                 //onChange: (value) => loginController.setBirthdate(value),
               ),
-              const SizedBox(height: 32),
+              Padding(
+                padding: const EdgeInsets.only(right: 16, bottom: 24),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Transform.scale(
+                          scale: 0.5,
+                          child: CupertinoSwitch(
+                            value: toggleValue,
+                            activeColor: Constants.successSnackBarColor,
+                            trackColor: Constants.primaryColor,
+                            thumbColor: Constants.whiteColor,
+                            onChanged: (value) => {
+                              setState(() {
+                                toggleValue = value;
+                              },
+                              ),
+                            },
+                          ),
+                        ),
+                        Text(
+                          'Remember',
+                          style: GoogleFonts.poppins(
+                            color: Constants.blackColor,
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        navigationService.push(ForgotPasswordPage.routeName);
+                      },
+                      child: Text(
+                        'Forgot password?',
+                        style: GoogleFonts.poppins(
+                          color: Constants.errorSnackBarColor,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
               CustomElevatedButton(
-                labelText: 'Sign Up',
+                labelText: 'Sign In',
                 onTap: () {
-                  navigationService.pushReplacement(LoginView.routeName);
+                  navigationService.pushReplacement(BottomNavigationBarControllerPage.routeName);
                 },
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 8),
+                padding: const EdgeInsets.only(top: 12),
                 child: GestureDetector(
                   onTap: () {
-                    navigationService.pushReplacement(LoginView.routeName);
+                    navigationService.pushReplacement(LoginSignUpPage.routeName);
                   },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'Already have an account? ',
+                        "Don't have an account? ",
                         style: GoogleFonts.poppins(
                           color: Constants.blackColor,
                           fontSize: 14,
@@ -154,7 +184,7 @@ class _LoginSignUpViewState extends State<LoginSignUpView> with TickerProviderSt
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 40),
+                padding: const EdgeInsets.only(top: 40, bottom: 8),
                 child: Text(
                   'Or connect with',
                   style: GoogleFonts.poppins(

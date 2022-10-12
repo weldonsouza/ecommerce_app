@@ -6,12 +6,12 @@ import 'package:provider/provider.dart';
 
 import '../../core/route/navigation_service.dart';
 import '../../core/utils/constants.dart';
+import '../pages/main/bottom_navigation_bar_controller_page.dart';
 import '../pages/main/bottom_navigation_bar_controller.dart';
-import '../pages/main/bottom_navigation_bar_controller_view_model.dart';
 import 'custom_icon_button.dart';
 
 AppBar CustomAppBar(BuildContext context, {required String title, required bool isBackButtonVisible, Function()? onTapButtonBack, Widget? widget}) {
-  var bottomNavigationController = Provider.of<BottomNavigationBarProviderController>(context);
+  var bottomNavigationController = Provider.of<BottomNavigationBarController>(context);
 
   return AppBar(
     backgroundColor: Constants.whiteColor,
@@ -36,7 +36,7 @@ AppBar CustomAppBar(BuildContext context, {required String title, required bool 
                   color: Constants.primaryColor.withOpacity(0.3),
                   onTap: onTapButtonBack ?? () {
                     bottomNavigationController.onItemTapped(0);
-                    navigationService.pushReplacement(BottomNavigationBarController.routeName);
+                    navigationService.pushReplacement(BottomNavigationBarControllerPage.routeName);
                   },
                 ),
               )

@@ -3,6 +3,8 @@ class ProductModel {
   final String? name;
   final String? description;
   final double? price;
+  final bool? favorite;
+  final double? review;
   final List<String>? images;
 
   ProductModel({
@@ -10,6 +12,8 @@ class ProductModel {
     this.name,
     this.description,
     this.price,
+    this.favorite,
+    this.review,
     this.images,
   });
 
@@ -18,6 +22,8 @@ class ProductModel {
         name = json['name'] as String?,
         description = json['description'] as String?,
         price = json['price'] as double?,
+        favorite = json['favorite'] as bool?,
+        review = json['review'] as double?,
         images =
             (json['images'] as List?)?.map((dynamic e) => e as String).toList();
 
@@ -26,6 +32,8 @@ class ProductModel {
         'name': name,
         'description': description,
         'price': price,
+        'favorite': favorite,
+        'review': review,
         'images': images,
       };
 }
