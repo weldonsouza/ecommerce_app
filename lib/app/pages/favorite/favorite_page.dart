@@ -16,6 +16,7 @@ import '../../widgets/custom_icon_button.dart';
 import '../bag/bag_controller.dart';
 import '../main/bottom_navigation_bar_controller_page.dart';
 import '../main/bottom_navigation_bar_controller.dart';
+import '../product/product_detail_page.dart';
 import 'favorite_controller.dart';
 
 class FavoritePage extends StatefulWidget {
@@ -49,7 +50,7 @@ class _FavoritePageState extends State<FavoritePage> {
           width: 40,
           height: 40,
           child: CustomIconButton(
-            widget: favoriteController.listFavoriteProducts.isEmpty
+            widget: bagController.listBagProducts.isEmpty
                 ? SvgPicture.asset(
                     'assets/icons/shopping_bag.svg',
                     width: 20,
@@ -61,7 +62,7 @@ class _FavoritePageState extends State<FavoritePage> {
                     elevation: 0,
                     position: BadgePosition.topEnd(top: -8, end: -8),
                     badgeContent: Text(
-                      '${favoriteController.listFavoriteProducts.length}',
+                      '${bagController.listBagProducts.length}',
                       style: TextStyle(
                         color: Constants.whiteColor,
                         fontSize: 10,
@@ -122,42 +123,50 @@ class _FavoritePageState extends State<FavoritePage> {
                       ),
                     ],
                   ),
-                  child: SizedBox(
-                    width: Utils.mediaQuery(context, 1),
-                    child: Row(
-                      children: [
-                        Container(
-                          width: 160,
-                          height: 140,
-                          padding: const EdgeInsets.only(bottom: 10),
-                          child: Card(
-                            elevation: 1.5,
-                            color: Colors.grey.shade300,
-                            margin: const EdgeInsets.only(right: 16),
-                            shape: const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.all(Radius.circular(12)),
-                            ),
-                            child: SizedBox(
-                              width: 180,
-                              child: ClipRRect(
-                                borderRadius: const BorderRadius.all(Radius.circular(12)),
-                                child: CachedNetworkImage(
-                                  imageUrl: favoriteController.listFavoriteProducts[index].images![0],
-                                  fit: BoxFit.contain,
-                                  errorWidget: (context, url, error) => Padding(
-                                    padding: const EdgeInsets.all(24),
-                                    child: SvgPicture.asset(
-                                      'assets/icons/image_not_found.svg',
-                                      width: double.infinity,
-                                      color: Constants.whiteColor,
+                  child: GestureDetector(
+                    onTap: () {
+                      navigationService.push(
+                        ProductDetailPage.routeName,
+                        arguments: favoriteController.listFavoriteProducts[index],
+                      );
+                    },
+                    child: SizedBox(
+                      width: Utils.mediaQuery(context, 1),
+                      child: Row(
+                        children: [
+                          Container(
+                            width: 160,
+                            height: 140,
+                            padding: const EdgeInsets.only(bottom: 10),
+                            child: Card(
+                              elevation: 1.5,
+                              color: Colors.grey.shade300,
+                              margin: const EdgeInsets.only(right: 16),
+                              shape: const RoundedRectangleBorder(
+                                borderRadius: BorderRadius.all(Radius.circular(12)),
+                              ),
+                              child: SizedBox(
+                                width: 180,
+                                child: ClipRRect(
+                                  borderRadius: const BorderRadius.all(Radius.circular(12)),
+                                  child: CachedNetworkImage(
+                                    imageUrl: favoriteController.listFavoriteProducts[index].images![0],
+                                    fit: BoxFit.contain,
+                                    errorWidget: (context, url, error) => Padding(
+                                      padding: const EdgeInsets.all(24),
+                                      child: SvgPicture.asset(
+                                        'assets/icons/image_not_found.svg',
+                                        width: double.infinity,
+                                        color: Constants.whiteColor,
+                                      ),
                                     ),
-                                  ),
-                                  placeholder: (context, url) => const Center(
-                                    child: Padding(
-                                      padding: EdgeInsets.all(10),
-                                      child: CircularProgressIndicator(
-                                        valueColor: AlwaysStoppedAnimation<Color>(
-                                          Constants.primaryColor,
+                                    placeholder: (context, url) => const Center(
+                                      child: Padding(
+                                        padding: EdgeInsets.all(10),
+                                        child: CircularProgressIndicator(
+                                          valueColor: AlwaysStoppedAnimation<Color>(
+                                            Constants.primaryColor,
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -166,77 +175,77 @@ class _FavoritePageState extends State<FavoritePage> {
                               ),
                             ),
                           ),
-                        ),
-                        Container(
-                          width: Utils.mediaQuery(context, 0.48),
-                          height: 140,
-                          padding: const EdgeInsets.only(top: 4, right: 16),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    favoriteController.listFavoriteProducts[index].name!,
-                                    style: GoogleFonts.poppins(
-                                      color: Constants.blackColor,
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold,
-                                      letterSpacing: 1.2,
+                          Container(
+                            width: Utils.mediaQuery(context, 0.48),
+                            height: 140,
+                            padding: const EdgeInsets.only(top: 4, right: 16),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      favoriteController.listFavoriteProducts[index].name!,
+                                      style: GoogleFonts.poppins(
+                                        color: Constants.blackColor,
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold,
+                                        letterSpacing: 1.2,
+                                      ),
                                     ),
-                                  ),
-                                  Row(
-                                    children: [
-                                      Text(
-                                        'Review (',
-                                        style: GoogleFonts.poppins(
-                                          color: Constants.blackColor,
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w500,
+                                    Row(
+                                      children: [
+                                        Text(
+                                          'Review (',
+                                          style: GoogleFonts.poppins(
+                                            color: Constants.blackColor,
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w500,
+                                          ),
                                         ),
-                                      ),
-                                      Icon(IconData(0xe5f9, fontFamily: 'MaterialIcons'), size: 16),
-                                      Text(
-                                        ' ${favoriteController.listFavoriteProducts[index].review} )',
-                                        style: GoogleFonts.poppins(
-                                          color: Constants.blackColor,
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w500,
+                                        Icon(IconData(0xe5f9, fontFamily: 'MaterialIcons'), size: 16),
+                                        Text(
+                                          ' ${favoriteController.listFavoriteProducts[index].review} )',
+                                          style: GoogleFonts.poppins(
+                                            color: Constants.blackColor,
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w500,
+                                          ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                Text(
+                                  '\$ ${favoriteController.listFavoriteProducts[index].price!}',
+                                  style: GoogleFonts.poppins(
+                                    color: Constants.blackColor,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
                                   ),
-                                ],
-                              ),
-                              Text(
-                                '\$ ${favoriteController.listFavoriteProducts[index].price!}',
-                                style: GoogleFonts.poppins(
-                                  color: Constants.blackColor,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
                                 ),
-                              ),
-                              SizedBox(
-                                width: 100,
-                                height: 32,
-                                child: CustomElevatedButton(
-                                  labelText: 'Add to Bag',
-                                  textSize: 14,
-                                  paddingButton: 0,
-                                  paddingButtonLeft: 0,
-                                  paddingButtonRight: 0,
-                                  onTap: () {
-                                    bagController.setBagProducts(favoriteController.listFavoriteProducts[index]);
-                                  },
+                                SizedBox(
+                                  width: 100,
+                                  height: 32,
+                                  child: CustomElevatedButton(
+                                    labelText: 'Add to Bag',
+                                    textSize: 14,
+                                    paddingButton: 0,
+                                    paddingButtonLeft: 0,
+                                    paddingButtonRight: 0,
+                                    onTap: () {
+                                      bagController.setBagProducts(favoriteController.listFavoriteProducts[index]);
+                                    },
+                                  ),
                                 ),
-                              ),
-                              SizedBox(),
-                            ],
+                                SizedBox(),
+                              ],
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 );
