@@ -25,14 +25,14 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
 
   final CarouselController controllerCarouselSlider = CarouselController();
   int current = 0;
-  double sizeInit = 0.53;
+  double sizeInit = 0.45;
 
   @override
   Widget build(BuildContext context) {
     ProductModel args = ModalRoute.of(context)!.settings.arguments as ProductModel;
 
     return Scaffold(
-      backgroundColor: Constants.whiteColor,
+      backgroundColor: Constants.textFieldDisable,
       body: Stack(
         children: [
           CarouselSlider(
