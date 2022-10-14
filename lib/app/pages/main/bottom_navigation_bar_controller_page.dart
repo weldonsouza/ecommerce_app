@@ -15,8 +15,7 @@ class BottomNavigationBarControllerPage extends StatefulWidget {
   State<BottomNavigationBarControllerPage> createState() => _BottomNavigationBarControllerPageState();
 }
 
-class _BottomNavigationBarControllerPageState
-    extends State<BottomNavigationBarControllerPage> {
+class _BottomNavigationBarControllerPageState extends State<BottomNavigationBarControllerPage> {
   @override
   void initState() {
     super.initState();
@@ -142,9 +141,12 @@ class _BottomNavigationBarControllerPageState
           ),
         ),
       ),
-      body: bottomNavigationController.pages[
-        bottomNavigationController.selectedIndex
-      ],
+      body: PageStorage(
+        child: bottomNavigationController.pages[
+          bottomNavigationController.selectedIndex
+        ],
+        bucket: bottomNavigationController.bucket,
+      ),
     );
   }
 }

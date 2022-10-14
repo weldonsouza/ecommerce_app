@@ -13,6 +13,7 @@ import 'pages/login/forgot_password_page.dart';
 import 'pages/login/login_signup_page.dart';
 import 'pages/login/login_page.dart';
 import 'pages/main/bottom_navigation_bar_controller_page.dart';
+import 'pages/product/product_detail_page.dart';
 import 'pages/profile/profile_edit_page.dart';
 import 'pages/profile/profile_page.dart';
 import 'pages/search/search_page.dart';
@@ -57,6 +58,7 @@ class MainApp extends StatelessWidget {
           FavoritePage.routeName: (BuildContext context) => const FavoritePage(),
           ProfilePage.routeName: (BuildContext context) => const ProfilePage(),
           ProfileEditPage.routeName: (BuildContext context) => const ProfileEditPage(),
+          ProductDetailPage.routeName: (BuildContext context) => const ProductDetailPage(),
         },
       ),
     );

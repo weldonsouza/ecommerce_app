@@ -4,11 +4,13 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../core/route/navigation_service.dart';
 import '../../../../core/utils/constants.dart';
 import '../../../../core/utils/utils.dart';
 import '../../../../domain/models/products/product_model.dart';
 import '../../../widgets/custom_icon_button.dart';
 import '../../favorite/favorite_controller.dart';
+import '../../product/product_detail_page.dart';
 
 class ProductItemWidget extends StatefulWidget {
   final ProductModel item;
@@ -45,7 +47,10 @@ class _ProductItemWidgetState extends State<ProductItemWidget> {
 
     return GestureDetector(
       onTap: () {
-
+        navigationService.push(
+          ProductDetailPage.routeName,
+          arguments: widget.item,
+        );
       },
       child: Column(
         children: [

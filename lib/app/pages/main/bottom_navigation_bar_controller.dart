@@ -14,12 +14,14 @@ class BottomNavigationBarController with ChangeNotifier {
   late BuildContext context;
 
   final List<Widget> pages = [
-    const HomePage(),
-    const FavoritePage(),
-    const SearchPage(),
-    const BagPage(),
-    const ProfilePage(),
+    const HomePage(key: PageStorageKey('home')),
+    const FavoritePage(key: PageStorageKey('favorite')),
+    const SearchPage(key: PageStorageKey('search')),
+    const BagPage(key: PageStorageKey('bag')),
+    const ProfilePage(key: PageStorageKey('profile')),
   ];
+
+  final PageStorageBucket bucket = PageStorageBucket();
 
   setContext(BuildContext value) => context = value;
 

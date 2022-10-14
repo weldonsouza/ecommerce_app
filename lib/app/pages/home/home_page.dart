@@ -28,7 +28,6 @@ class _HomePageState extends State<HomePage> {
     super.initState();
 
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      Provider.of<FavoriteController>(context, listen: false).listFavoriteProducts.clear();
       Provider.of<HomeController>(context, listen: false).init();
     });
   }

@@ -77,7 +77,7 @@ class _BagPageState extends State<BagPage> {
               padding: const EdgeInsets.only(top: 16, left: 20, bottom: 90),
               itemBuilder: (context, index) {
                 return Slidable(
-                  key: const ValueKey(1),
+                  key: Key(bagController.listBagProducts[index].id!),
                   endActionPane: ActionPane(
                     dismissible: DismissiblePane(
                       onDismissed: () {

@@ -97,7 +97,7 @@ class _FavoritePageState extends State<FavoritePage> {
               padding: const EdgeInsets.only(top: 16, left: 20, bottom: 90),
               itemBuilder: (context, index) {
                 return Slidable(
-                  key: const ValueKey(0),
+                  key: Key(favoriteController.listFavoriteProducts[index].id!),
                   endActionPane: ActionPane(
                     dismissible: DismissiblePane(
                       onDismissed: () {
@@ -168,6 +168,7 @@ class _FavoritePageState extends State<FavoritePage> {
                           ),
                         ),
                         Container(
+                          width: Utils.mediaQuery(context, 0.48),
                           height: 140,
                           padding: const EdgeInsets.only(top: 4, right: 16),
                           child: Column(
