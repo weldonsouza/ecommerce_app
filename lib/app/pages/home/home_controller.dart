@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/core/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 import '../../../domain/models/products/product_model.dart';
@@ -90,6 +91,9 @@ class HomeController with ChangeNotifier {
           "https://www.jbl.com.br/dw/image/v2/AAUJ_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dwfb3a7d36/JBL_LIVE_660NC_Product%20image_Front_Black.png?sw=537&sfrm=png",
           "https://www.jbl.com.br/dw/image/v2/AAUJ_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dw205d05a6/JBL_LIVE_660NC_Product%20image_Cushion_Black.png?sw=537&sfrm=png",
         ],
+        color: [
+          Constants.blackColor,
+        ],
       ),
       ProductModel(
         id: "619d23869c71130f9ea35702",
@@ -102,6 +106,9 @@ class HomeController with ChangeNotifier {
           "https://www.jbl.com.br/dw/image/v2/AAUJ_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dwe7465125/1.%20JBL_TOUR_ONE_Product%20Image_Hero.png?sw=537&sfrm=png",
           "https://www.jbl.com.br/dw/image/v2/AAUJ_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dw141b4a70/JBL_TOUR_ONE_Product%20Image_Buttons.png?sw=537&sfrm=png",
           "https://www.jbl.com.br/dw/image/v2/AAUJ_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dw3df2213a/JBL_TOUR_ONE_Product%20Image_Left%20View.png?sw=537&sfrm=png",
+        ],
+        color: [
+          Constants.blackColor,
         ],
       ),
       ProductModel(
@@ -116,6 +123,9 @@ class HomeController with ChangeNotifier {
           "https://www.akg.com/on/demandware.static/-/Sites-masterCatalog_Harman/default/dwc076cfc4/Y50BT-Black-Front-View-01_dvHAMaster.png",
           "https://www.akg.com/on/demandware.static/-/Sites-masterCatalog_Harman/default/dw77af3431/Y50BT-Black-Hero_dvHAMaster.png",
         ],
+        color: [
+          Constants.blackColor,
+        ],
       ),
       ProductModel(
         id: "619d23869c71130f9ea35704",
@@ -128,6 +138,9 @@ class HomeController with ChangeNotifier {
           "https://www.akg.com/on/demandware.static/-/Sites-masterCatalog_Harman/default/dwb3249837/AKG-N700NC-Wireless_Product-Image_Hero-1605x1605px.png",
           "https://www.akg.com/on/demandware.static/-/Sites-masterCatalog_Harman/default/dw2bc0e2bd/AKG_Product-Image_N700NC-Wireless_Folded-1605x1605px.png",
           "https://www.akg.com/on/demandware.static/-/Sites-masterCatalog_Harman/default/dw4d2a2ea3/AKG_Product-Image_N700NC-Wireless_Detail-View-03-1605x1605px.png",
+        ],
+        color: [
+          Constants.blackColor,
         ],
       ),
       ProductModel(
@@ -142,6 +155,9 @@ class HomeController with ChangeNotifier {
           "https://www.jbl.com.br/dw/image/v2/AAUJ_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dwfb3a7d36/JBL_LIVE_660NC_Product%20image_Front_Black.png?sw=537&sfrm=png",
           "https://www.jbl.com.br/dw/image/v2/AAUJ_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dw205d05a6/JBL_LIVE_660NC_Product%20image_Cushion_Black.png?sw=537&sfrm=png",
         ],
+        color: [
+          Constants.blackColor,
+        ],
       ),
       ProductModel(
         id: "619d23869c71130f9ea35706",
@@ -154,6 +170,9 @@ class HomeController with ChangeNotifier {
           "https://www.jbl.com.br/dw/image/v2/AAUJ_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dwe7465125/1.%20JBL_TOUR_ONE_Product%20Image_Hero.png?sw=537&sfrm=png",
           "https://www.jbl.com.br/dw/image/v2/AAUJ_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dw141b4a70/JBL_TOUR_ONE_Product%20Image_Buttons.png?sw=537&sfrm=png",
           "https://www.jbl.com.br/dw/image/v2/AAUJ_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dw3df2213a/JBL_TOUR_ONE_Product%20Image_Left%20View.png?sw=537&sfrm=png",
+        ],
+        color: [
+          Constants.blackColor,
         ],
       ),
       ProductModel(
@@ -168,6 +187,9 @@ class HomeController with ChangeNotifier {
           "https://www.akg.com/on/demandware.static/-/Sites-masterCatalog_Harman/default/dwc076cfc4/Y50BT-Black-Front-View-01_dvHAMaster.png",
           "https://www.akg.com/on/demandware.static/-/Sites-masterCatalog_Harman/default/dw77af3431/Y50BT-Black-Hero_dvHAMaster.png",
         ],
+        color: [
+          Constants.blackColor,
+        ],
       ),
       ProductModel(
         id: "619d23869c71130f9ea35708",
@@ -180,6 +202,9 @@ class HomeController with ChangeNotifier {
           "https://www.akg.com/on/demandware.static/-/Sites-masterCatalog_Harman/default/dwb3249837/AKG-N700NC-Wireless_Product-Image_Hero-1605x1605px.png",
           "https://www.akg.com/on/demandware.static/-/Sites-masterCatalog_Harman/default/dw2bc0e2bd/AKG_Product-Image_N700NC-Wireless_Folded-1605x1605px.png",
           "https://www.akg.com/on/demandware.static/-/Sites-masterCatalog_Harman/default/dw4d2a2ea3/AKG_Product-Image_N700NC-Wireless_Detail-View-03-1605x1605px.png",
+        ],
+        color: [
+          Constants.blackColor,
         ],
       ),
     ];

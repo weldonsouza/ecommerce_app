@@ -1,6 +1,7 @@
 import 'package:badges/badges.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:ecommerce_app/app/pages/product/components/card_expansion_tile_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -28,11 +29,12 @@ class ProductDetailPage extends StatefulWidget {
 }
 
 class _ProductDetailPageState extends State<ProductDetailPage> {
+  bool favorite = false;
+
   @override
   void initState() {
     super.initState();
   }
-  bool favorite = false;
 
   @override
   Widget build(BuildContext context) {
@@ -214,7 +216,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                 controller: scrollController,
                 physics: const BouncingScrollPhysics(),
                 child: Container(
-                  height: 450,
+                  //height: 450,
                   padding: const EdgeInsets.only(left: 16, right: 16),
                   decoration: BoxDecoration(
                     color: Constants.whiteColor,
@@ -243,41 +245,24 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 8),
-                            child: Text(
-                              '${args.name}',
-                              style: GoogleFonts.poppins(
-                                color: Constants.blackColor,
-                                fontSize: 24,
-                                fontWeight: FontWeight.bold,
-                              ),
+                          Text(
+                            '${args.name}',
+                            style: GoogleFonts.poppins(
+                              color: Constants.blackColor,
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 8),
-                            child: Text(
-                              '\$ ${args.price!}',
-                              style: GoogleFonts.poppins(
-                                color: Constants.blackColor,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                              ),
+                          Text(
+                            '\$ ${args.price!}',
+                            style: GoogleFonts.poppins(
+                              color: Constants.blackColor,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
                         ],
                       ),
-                      Text(
-                        '${args.description}',
-                        textAlign: TextAlign.justify,
-                        style: GoogleFonts.poppins(
-                          color: Constants.textField,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500,
-                          letterSpacing: 0.25,
-                        ),
-                      ),
-                      SizedBox(height: 12),
                       Row(
                         children: [
                           Icon(
@@ -321,6 +306,37 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                           fontWeight: FontWeight.w600,
                         ),
                       ),
+                      SizedBox(height: 12),
+                      Column(
+                        children: [
+                          CardExpansionTileWidget(
+                            title: 'Description',
+                            description: '${args.description}',
+                          ),
+                          CardExpansionTileWidget(
+                            title: 'Free Delivery and Returns',
+                            description: 'Free Delivery and Returns',
+                          ),
+                          CardExpansionTileWidget(
+                            title: 'See Reviews',
+                            widget: [
+                              Padding(
+                                padding: const EdgeInsets.only(bottom: 8),
+                                child: Text(
+                                  'See Reviews',
+                                  style: GoogleFonts.poppins(
+                                    color: Constants.textField,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w500,
+                                    letterSpacing: 0.25,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 24),
                     ],
                   ),
                 ),
@@ -329,18 +345,18 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
           ),
           Align(
             alignment: Alignment.bottomCenter,
-            child: Padding(
-              padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
+            child: Container(
+              color: Constants.whiteColor,
+              padding: const EdgeInsets.only(top: 8, left: 16, right: 16, bottom: 16),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
-                    width: 40,
-                    height: 40,
+                    width: 50,
+                    height: 50,
                     child: CustomIconButton(
-                      borderRadius: 100,
-                      color: Constants.transparent,
+                      color: Constants.primaryColor.withOpacity(0.3),
                       widget: SvgPicture.asset(
                         favorite == true ? 'assets/icons/favorite.svg' : 'assets/icons/favorite_outlined.svg',
                         color: Constants.blackColor,
@@ -358,17 +374,14 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                       },
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 8),
-                    child: CustomElevatedButton(
-                      labelText: 'Add to Bag',
-                      width: Utils.mediaQuery(context, 0.75),
-                      paddingButtonLeft: 0,
-                      paddingButtonRight: 0,
-                      onTap: () {
-                        bagController.setBagProducts(args);
-                      },
-                    ),
+                  CustomElevatedButton(
+                    labelText: 'Add to Bag',
+                    width: Utils.mediaQuery(context, 0.75),
+                    paddingButtonLeft: 0,
+                    paddingButtonRight: 0,
+                    onTap: () {
+                      bagController.setBagProducts(args);
+                    },
                   ),
                 ],
               ),
