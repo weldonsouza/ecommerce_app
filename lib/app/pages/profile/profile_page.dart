@@ -11,6 +11,7 @@ import '../../widgets/cliprrect_photo_widget.dart';
 import '../../widgets/custom_elevated_button.dart';
 import '../login/login_page.dart';
 import '../main/bottom_navigation_bar_controller.dart';
+import 'components/card_profile_widget.dart';
 import 'profile_edit_page.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -87,69 +88,56 @@ class _ProfilePageState extends State<ProfilePage> {
               color: Constants.textFieldDisable,
               margin: EdgeInsets.only(left: 16, right: 16, bottom: 8),
             ),
-            _cardView(null, 'settings', 'Settings', () {}),
-            _cardView(Icons.assignment_outlined, '', 'My Orders', () {}),
-            _cardView(null, 'alternate_map', 'Address', () {}),
-            _cardView(Icons.lock_outline, '', 'Change Password', () {}),
+            CardProfileWidget(
+              iconSvg: 'settings',
+              title: 'Settings',
+              onTap: () {},
+            ),
+            CardProfileWidget(
+              icon: Icons.assignment_outlined,
+              title: 'My Orders',
+              onTap: () {},
+            ),
+            CardProfileWidget(
+              iconSvg: 'alternate_map',
+              title: 'Address',
+              onTap: () {},
+            ),
+            CardProfileWidget(
+              icon: Icons.lock_outline,
+              title: 'Change Password',
+              onTap: () {},
+            ),
             Container(
               width: Utils.mediaQuery(context, 1),
               height: 1,
               color: Constants.textFieldDisable,
               margin: EdgeInsets.only(top: 8, left: 16, right: 16, bottom: 8),
             ),
-            _cardView(Icons.help_outline, '', 'Help & Support', () {}),
-            _cardView(Icons.lock_outline, '', 'Privacy Policy', () {}),
-            _cardView(Icons.lock_outline, '', 'Terms of Use', () {}),
-            _cardView(Icons.logout, '', 'Logout', () {
-              navigationService.pushReplacement(LoginPage.routeName);
-            }),
+            CardProfileWidget(
+              icon: Icons.help_outline,
+              title: 'Help & Support',
+              onTap: () {},
+            ),
+            CardProfileWidget(
+              icon: Icons.lock_outline,
+              title: 'Privacy Policy',
+              onTap: () {},
+            ),
+            CardProfileWidget(
+              icon: Icons.lock_outline,
+              title: 'Terms of Use',
+              onTap: () {},
+            ),
+            CardProfileWidget(
+              icon: Icons.logout,
+              title: 'Logout',
+              onTap: () {
+                navigationService.pushReplacement(LoginPage.routeName);
+              },
+            ),
             SizedBox(height: 96),
           ],
-        ),
-      ),
-    );
-  }
-
-  _cardView(icon, iconSvg, title, onTap) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 16, right: 16),
-      child: InkWell(
-        onTap: onTap,
-        child: Padding(
-          padding: const EdgeInsets.only(top: 6, bottom: 6),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                children: [
-                  icon != null
-                      ? Icon(
-                          icon,
-                          size: 24,
-                        )
-                      : SvgPicture.asset(
-                          'assets/icons/$iconSvg.svg',
-                          width: 24,
-                          height: 24,
-                          color: Constants.blackColor,
-                        ),
-                  SizedBox(width: 12),
-                  Text(
-                    title,
-                    style: GoogleFonts.poppins(
-                      color: Constants.blackColor,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ],
-              ),
-              Icon(
-                Icons.arrow_forward_ios,
-                size: 16,
-              ),
-            ],
-          ),
         ),
       ),
     );
