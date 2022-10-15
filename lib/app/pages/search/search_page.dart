@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../core/utils/constants.dart';
 import '../../widgets/custom_app_bar.dart';
@@ -31,9 +32,10 @@ class _SearchPageState extends State<SearchPage> {
           width: 40,
           height: 40,
           child: CustomIconButton(
-            widget: Icon(
-              Icons.tune_outlined,
-              size: 20,
+            widget: SvgPicture.asset(
+              'assets/icons/tune_variant.svg',
+              width: 20,
+              height: 20,
               color: Constants.blackColor,
             ),
             color: Constants.primaryColor.withOpacity(0.3),

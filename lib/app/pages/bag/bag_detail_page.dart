@@ -1,5 +1,4 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:ecommerce_app/app/widgets/custom_empty_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -10,21 +9,21 @@ import '../../../core/route/navigation_service.dart';
 import '../../../core/utils/constants.dart';
 import '../../../core/utils/utils.dart';
 import '../../widgets/custom_app_bar.dart';
+import '../../widgets/custom_elevated_button.dart';
+import '../../widgets/custom_empty_widget.dart';
 import '../../widgets/custom_icon_button.dart';
-import '../product/product_detail_page.dart';
 import 'bag_controller.dart';
-import 'bag_detail_page.dart';
 
-class BagPage extends StatefulWidget {
-  const BagPage({Key? key}) : super(key: key);
+class BagDetailPage extends StatefulWidget {
+  const BagDetailPage({Key? key}) : super(key: key);
 
-  static String get routeName => '/bag';
+  static String get routeName => '/bag_detail';
 
   @override
-  State<BagPage> createState() => _BagPageState();
+  State<BagDetailPage> createState() => _BagDetailPageState();
 }
 
-class _BagPageState extends State<BagPage> {
+class _BagDetailPageState extends State<BagDetailPage> {
   @override
   void initState() {
     super.initState();
@@ -37,10 +36,10 @@ class _BagPageState extends State<BagPage> {
       _n++;
     });
   }
+
   void minus() {
     setState(() {
-      if (_n != 0)
-        _n--;
+      if (_n != 0) _n--;
     });
   }
 
@@ -64,16 +63,14 @@ class _BagPageState extends State<BagPage> {
             fontWeight: FontWeight.w500,
           ),
         ),
+        onTapButtonBack: () {
+          Navigator.of(context).pop();
+        },
       ),
-      body: bagController.listBagProducts.isEmpty
-          ? CustomEmptyWidget(
-              icon: 'empty_bag',
-              title: 'My Bag is Empty!',
-              subTitle: 'Explore more and shortlist some items.',
-              titleButton: 'Start Shopping',
-              widthButton: Utils.mediaQuery(context, 0.4),
-            )
-          : ListView.builder(
+      body: Column(
+        children: [
+          Expanded(
+            child: ListView.builder(
               physics: const BouncingScrollPhysics(),
               itemCount: bagController.listBagProducts.length,
               padding: const EdgeInsets.only(top: 16, left: 20, bottom: 90),
@@ -182,7 +179,10 @@ class _BagPageState extends State<BagPage> {
                                             fontWeight: FontWeight.w500,
                                           ),
                                         ),
-                                        Icon(IconData(0xe5f9, fontFamily: 'MaterialIcons'), size: 16),
+                                        Icon(
+                                          IconData(0xe5f9, fontFamily: 'MaterialIcons'),
+                                          size: 16,
+                                        ),
                                         Text(
                                           ' ${bagController.listBagProducts[index].review} )',
                                           style: GoogleFonts.poppins(
@@ -267,6 +267,55 @@ class _BagPageState extends State<BagPage> {
                 );
               },
             ),
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Container(
+              color: Constants.whiteColor,
+              padding: const EdgeInsets.only(top: 8, left: 16, right: 16, bottom: 16),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Container(
+                    height: 50,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Total Price',
+                          style: GoogleFonts.poppins(
+                            color: Constants.textColor,
+                            fontSize: 12,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        Text(
+                          '\$ ${bagController.listBagProducts[0].price!}',
+                          style: GoogleFonts.poppins(
+                            color: Constants.blackColor,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  CustomElevatedButton(
+                    labelText: 'Proceed',
+                    width: Utils.mediaQuery(context, 0.5),
+                    paddingButtonLeft: 0,
+                    paddingButtonRight: 0,
+                    onTap: () {
+                      //bagController.setBagProducts(args);
+                    },
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

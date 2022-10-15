@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import '../core/provider/provider_setup.dart';
 import '../core/route/navigation_service.dart';
 import '../core/utils/constants.dart';
+import 'pages/bag/bag_detail_page.dart';
 import 'pages/bag/bag_page.dart';
 import 'pages/favorite/favorite_page.dart';
 import 'pages/home/home_page.dart';
@@ -59,6 +60,7 @@ class MainApp extends StatelessWidget {
           ProfilePage.routeName: (BuildContext context) => const ProfilePage(),
           ProfileEditPage.routeName: (BuildContext context) => const ProfileEditPage(),
           ProductDetailPage.routeName: (BuildContext context) => const ProductDetailPage(),
+          BagDetailPage.routeName: (BuildContext context) => const BagDetailPage(),
         },
       ),
     );
