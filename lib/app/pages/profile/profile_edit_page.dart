@@ -3,6 +3,7 @@ import 'package:ecommerce_app/core/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:provider/provider.dart';
 
 import '../../../core/utils/constants.dart';
@@ -23,14 +24,18 @@ class ProfileEditPage extends StatefulWidget {
 
 class _ProfileEditPageState extends State<ProfileEditPage> {
   final TextEditingController _fullNameController = TextEditingController();
-  final TextEditingController _genderController = TextEditingController();
+  final TextEditingController _userNameController = TextEditingController();
   final TextEditingController _birthdayController = TextEditingController();
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
 
+  var maskPhoneFormatter = MaskTextInputFormatter(mask: '+## (##) #####-####', filter: { "#": RegExp(r'[0-9]') });
+  var maskDateFormatter = MaskTextInputFormatter(mask: '##/##/####', filter: { "#": RegExp(r'[0-9]') });
+  List<String> list = <String>['Gender', 'Male', 'Female'];
+  String dropdownValue = 'Gender';
+
   @override
   Widget build(BuildContext context) {
-    var bottomNavigationController = Provider.of<BottomNavigationBarController>(context);
     Map args = ModalRoute.of(context)!.settings.arguments as Map;
 
     return Scaffold(
@@ -127,18 +132,57 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
                       keyboardType: TextInputType.text,
                     ),
                     const SizedBox(height: 16),
+                    CustomTextFormField(
+                      controller: _userNameController,
+                      labelText: 'User Name',
+                      hint: args['userName'],
+                      keyboardType: TextInputType.text,
+                    ),
+                    const SizedBox(height: 16),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        SizedBox(
-                          width: Utils.mediaQuery(context, 0.5),
-                          child: CustomTextFormField(
-                            controller: _genderController,
-                            labelText: 'Gender',
-                            hint: 'Gender',
-                            keyboardType: TextInputType.emailAddress,
-                            paddingRight: 8,
-                            //prefixIcon: const Icon(Icons.description),
-                            //onChanged: (value) => _genderController.setLogin(value),
+                        Container(
+                          width: Utils.mediaQuery(context, 0.44),
+                          height: 60,
+                          margin: EdgeInsets.only(left: 16),
+                          child: DecoratedBox(
+                            decoration: BoxDecoration(
+                              border: Border.all(color: Constants.textField),
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8),
+                              child: DropdownButton<String>(
+                                value: dropdownValue,
+                                itemHeight: 60,
+                                elevation: 0,
+                                isExpanded: true,
+                                underline: Container(),
+                                onChanged: (String? value) {
+                                  setState(() {
+                                    dropdownValue = value!;
+                                  });
+                                },
+                                items: list.map<DropdownMenuItem<String>>((String value) {
+                                  return DropdownMenuItem<String>(
+                                    value: value,
+                                    alignment: Alignment.centerLeft,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(4),
+                                      child: Text(
+                                        value,
+                                        style: GoogleFonts.poppins(
+                                          fontSize: 16,
+                                          color: Constants.textField,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                }).toList(),
+                              ),
+                            ),
                           ),
                         ),
                         SizedBox(
@@ -147,10 +191,9 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
                             controller: _birthdayController,
                             labelText: 'Birthday',
                             hint: 'Birthday',
-                            keyboardType: TextInputType.emailAddress,
+                            keyboardType: TextInputType.number,
+                            inputFormatters: [maskDateFormatter],
                             paddingLeft: 8,
-                            //prefixIcon: const Icon(Icons.description),
-                            //onChanged: (value) => loginController.setLogin(value),
                           ),
                         ),
                       ],
@@ -160,14 +203,15 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
                       controller: _phoneController,
                       labelText: 'Phone number',
                       hint: 'Phone number',
-                      keyboardType: TextInputType.text,
+                      keyboardType: TextInputType.phone,
+                      inputFormatters: [maskPhoneFormatter],
                     ),
                     const SizedBox(height: 16),
                     CustomTextFormField(
                       controller: _emailController,
                       labelText: 'Email',
                       hint: 'Email',
-                      keyboardType: TextInputType.text,
+                      keyboardType: TextInputType.emailAddress,
                     ),
                   ],
                 ),

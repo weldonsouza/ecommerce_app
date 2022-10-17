@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'comments_model.dart';
+
 class ProductModel {
   final String? id;
   final String? name;
@@ -9,6 +11,7 @@ class ProductModel {
   final double? review;
   final List<String>? images;
   final List<Color>? color;
+  final List<CommentsModel>? comments;
 
   ProductModel({
     this.id,
@@ -19,6 +22,7 @@ class ProductModel {
     this.review,
     this.images,
     this.color,
+    this.comments,
   });
 
   ProductModel.fromJson(Map<String, dynamic> json)
@@ -31,7 +35,10 @@ class ProductModel {
         images =
             (json['images'] as List?)?.map((dynamic e) => e as String).toList(),
         color =
-            (json['color'] as List?)?.map((dynamic e) => e as Color).toList();
+            (json['color'] as List?)?.map((dynamic e) => e as Color).toList(),
+        comments = (json['comments'] as List?)
+            ?.map((dynamic e) => e as CommentsModel)
+            .toList();
 
   Map<String, dynamic> toJson() => {
         '_id': id,
@@ -42,5 +49,6 @@ class ProductModel {
         'review': review,
         'images': images,
         'color': color,
+        'comments': comments,
       };
 }

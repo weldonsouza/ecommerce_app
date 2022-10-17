@@ -14,6 +14,8 @@ import 'pages/login/forgot_password_page.dart';
 import 'pages/login/login_signup_page.dart';
 import 'pages/login/login_page.dart';
 import 'pages/main/bottom_navigation_bar_controller_page.dart';
+import 'pages/my_orders/my_orders_detail_page.dart';
+import 'pages/my_orders/my_orders_page.dart';
 import 'pages/product/product_detail_page.dart';
 import 'pages/profile/profile_edit_page.dart';
 import 'pages/profile/profile_page.dart';
@@ -61,6 +63,8 @@ class MainApp extends StatelessWidget {
           ProfileEditPage.routeName: (BuildContext context) => const ProfileEditPage(),
           ProductDetailPage.routeName: (BuildContext context) => const ProductDetailPage(),
           BagDetailPage.routeName: (BuildContext context) => const BagDetailPage(),
+          MyOrdersPage.routeName: (BuildContext context) => const MyOrdersPage(),
+          MyOrdersDetailPage.routeName: (BuildContext context) => const MyOrdersDetailPage(),
         },
       ),
     );

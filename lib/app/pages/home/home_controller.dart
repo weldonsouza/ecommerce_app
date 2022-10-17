@@ -1,6 +1,7 @@
 import 'package:ecommerce_app/core/utils/constants.dart';
 import 'package:flutter/material.dart';
 
+import '../../../domain/models/products/comments_model.dart';
 import '../../../domain/models/products/product_model.dart';
 import '../../../domain/models/products/promo_model.dart';
 
@@ -93,6 +94,44 @@ class HomeController with ChangeNotifier {
         ],
         color: [
           Constants.blackColor,
+          Constants.errorSnackBarColor,
+          Constants.successSnackBarColor,
+        ],
+        comments: [
+          CommentsModel(
+            id: '619d23869c71130f9ea35111',
+            name: 'Christopher Vaughn',
+            comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s '
+                'standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to'
+                ' make a type specimen book.',
+            review: 5.0,
+            photo: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
+            date: '5h oct',
+          ),
+          CommentsModel(
+            id: '619d23869c71130f9ea35112',
+            name: 'Justin Clark',
+            comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+            review: 4.5,
+            photo: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
+            date: '1D oct',
+          ),
+          CommentsModel(
+            id: '619d23869c71130f9ea35113',
+            name: 'Joseph Foley',
+            comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+            review: 3.0,
+            photo: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
+            date: '2D oct',
+          ),
+          CommentsModel(
+            id: '619d23869c71130f9ea35113',
+            name: 'Joseph Foley',
+            comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+            review: 3.5,
+            photo: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
+            date: '2D oct',
+          ),
         ],
       ),
       ProductModel(
@@ -109,6 +148,40 @@ class HomeController with ChangeNotifier {
         ],
         color: [
           Constants.blackColor,
+          Constants.errorSnackBarColor,
+        ],
+        comments: [
+          CommentsModel(
+            id: '619d23869c71130f9ea35111',
+            name: 'Christopher Vaughn',
+            comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s '
+                'standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to'
+                ' make a type specimen book.',
+            review: 5.0,
+            photo: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
+            date: '5h oct',
+          ),
+          CommentsModel(
+            id: '619d23869c71130f9ea35112',
+            name: 'Justin Clark',
+            comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+            review: 4.5,
+            photo: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
+            date: '1D oct',
+          ),
+          CommentsModel(
+            id: '619d23869c71130f9ea35113',
+            name: 'Joseph Foley',
+            comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s '
+                'standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to'
+                ' make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, '
+                'remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing '
+                'Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions '
+                'of Lorem Ipsum.',
+            review: 4.5,
+            photo: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
+            date: '2D oct',
+          ),
         ],
       ),
       ProductModel(
@@ -126,6 +199,39 @@ class HomeController with ChangeNotifier {
         color: [
           Constants.blackColor,
         ],
+        comments: [
+          CommentsModel(
+            id: '619d23869c71130f9ea35111',
+            name: 'Christopher Vaughn',
+            comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s '
+                'standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to'
+                ' make a type specimen book.',
+            review: 5.0,
+            photo: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
+            date: '5h oct',
+          ),
+          CommentsModel(
+            id: '619d23869c71130f9ea35112',
+            name: 'Justin Clark',
+            comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+            review: 4.5,
+            photo: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
+            date: '1D oct',
+          ),
+          CommentsModel(
+            id: '619d23869c71130f9ea35113',
+            name: 'Joseph Foley',
+            comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s '
+                'standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to'
+                ' make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, '
+                'remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing '
+                'Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions '
+                'of Lorem Ipsum.',
+            review: 4.5,
+            photo: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
+            date: '2D oct',
+          ),
+        ],
       ),
       ProductModel(
         id: "619d23869c71130f9ea35704",
@@ -141,6 +247,39 @@ class HomeController with ChangeNotifier {
         ],
         color: [
           Constants.blackColor,
+        ],
+        comments: [
+          CommentsModel(
+            id: '619d23869c71130f9ea35111',
+            name: 'Christopher Vaughn',
+            comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s '
+                'standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to'
+                ' make a type specimen book.',
+            review: 5.0,
+            photo: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
+            date: '5h oct',
+          ),
+          CommentsModel(
+            id: '619d23869c71130f9ea35112',
+            name: 'Justin Clark',
+            comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+            review: 4.5,
+            photo: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
+            date: '1D oct',
+          ),
+          CommentsModel(
+            id: '619d23869c71130f9ea35113',
+            name: 'Joseph Foley',
+            comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s '
+                'standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to'
+                ' make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, '
+                'remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing '
+                'Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions '
+                'of Lorem Ipsum.',
+            review: 4.5,
+            photo: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
+            date: '2D oct',
+          ),
         ],
       ),
       ProductModel(
@@ -158,6 +297,39 @@ class HomeController with ChangeNotifier {
         color: [
           Constants.blackColor,
         ],
+        comments: [
+          CommentsModel(
+            id: '619d23869c71130f9ea35111',
+            name: 'Christopher Vaughn',
+            comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s '
+                'standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to'
+                ' make a type specimen book.',
+            review: 5.0,
+            photo: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
+            date: '5h oct',
+          ),
+          CommentsModel(
+            id: '619d23869c71130f9ea35112',
+            name: 'Justin Clark',
+            comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+            review: 4.5,
+            photo: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
+            date: '1D oct',
+          ),
+          CommentsModel(
+            id: '619d23869c71130f9ea35113',
+            name: 'Joseph Foley',
+            comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s '
+                'standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to'
+                ' make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, '
+                'remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing '
+                'Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions '
+                'of Lorem Ipsum.',
+            review: 4.5,
+            photo: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
+            date: '2D oct',
+          ),
+        ],
       ),
       ProductModel(
         id: "619d23869c71130f9ea35706",
@@ -173,6 +345,39 @@ class HomeController with ChangeNotifier {
         ],
         color: [
           Constants.blackColor,
+        ],
+        comments: [
+          CommentsModel(
+            id: '619d23869c71130f9ea35111',
+            name: 'Christopher Vaughn',
+            comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s '
+                'standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to'
+                ' make a type specimen book.',
+            review: 5.0,
+            photo: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
+            date: '5h oct',
+          ),
+          CommentsModel(
+            id: '619d23869c71130f9ea35112',
+            name: 'Justin Clark',
+            comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+            review: 4.5,
+            photo: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
+            date: '1D oct',
+          ),
+          CommentsModel(
+            id: '619d23869c71130f9ea35113',
+            name: 'Joseph Foley',
+            comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s '
+                'standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to'
+                ' make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, '
+                'remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing '
+                'Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions '
+                'of Lorem Ipsum.',
+            review: 4.5,
+            photo: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
+            date: '2D oct',
+          ),
         ],
       ),
       ProductModel(
@@ -190,6 +395,39 @@ class HomeController with ChangeNotifier {
         color: [
           Constants.blackColor,
         ],
+        comments: [
+          CommentsModel(
+            id: '619d23869c71130f9ea35111',
+            name: 'Christopher Vaughn',
+            comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s '
+                'standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to'
+                ' make a type specimen book.',
+            review: 5.0,
+            photo: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
+            date: '5h oct',
+          ),
+          CommentsModel(
+            id: '619d23869c71130f9ea35112',
+            name: 'Justin Clark',
+            comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+            review: 4.5,
+            photo: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
+            date: '1D oct',
+          ),
+          CommentsModel(
+            id: '619d23869c71130f9ea35113',
+            name: 'Joseph Foley',
+            comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s '
+                'standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to'
+                ' make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, '
+                'remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing '
+                'Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions '
+                'of Lorem Ipsum.',
+            review: 4.5,
+            photo: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
+            date: '2D oct',
+          ),
+        ],
       ),
       ProductModel(
         id: "619d23869c71130f9ea35708",
@@ -205,6 +443,39 @@ class HomeController with ChangeNotifier {
         ],
         color: [
           Constants.blackColor,
+        ],
+        comments: [
+          CommentsModel(
+            id: '619d23869c71130f9ea35111',
+            name: 'Christopher Vaughn',
+            comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s '
+                'standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to'
+                ' make a type specimen book.',
+            review: 5.0,
+            photo: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
+            date: '5h oct',
+          ),
+          CommentsModel(
+            id: '619d23869c71130f9ea35112',
+            name: 'Justin Clark',
+            comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+            review: 4.5,
+            photo: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
+            date: '1D oct',
+          ),
+          CommentsModel(
+            id: '619d23869c71130f9ea35113',
+            name: 'Joseph Foley',
+            comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s '
+                'standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to'
+                ' make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, '
+                'remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing '
+                'Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions '
+                'of Lorem Ipsum.',
+            review: 3,
+            photo: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
+            date: '2D oct',
+          ),
         ],
       ),
     ];

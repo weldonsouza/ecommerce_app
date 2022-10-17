@@ -2,7 +2,9 @@ import 'package:badges/badges.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ecommerce_app/app/pages/product/components/card_expansion_tile_widget.dart';
+import 'package:ecommerce_app/app/widgets/custom_card_comments_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -11,6 +13,7 @@ import '../../../core/route/navigation_service.dart';
 import '../../../core/utils/constants.dart';
 import '../../../core/utils/utils.dart';
 import '../../../domain/models/products/product_model.dart';
+import '../../widgets/cliprrect_photo_widget.dart';
 import '../../widgets/custom_elevated_button.dart';
 import '../../widgets/custom_icon_button.dart';
 import '../bag/bag_controller.dart';
@@ -29,13 +32,6 @@ class ProductDetailPage extends StatefulWidget {
 }
 
 class _ProductDetailPageState extends State<ProductDetailPage> {
-  bool favorite = false;
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     var productDetailController = Provider.of<ProductDetailController>(context);
@@ -169,6 +165,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                       width: 40,
                       height: 40,
                       child: CustomIconButton(
+                        color: Constants.whiteColor.withOpacity(0.7),
                         widget: bagController.listBagProducts.isEmpty
                             ? SvgPicture.asset(
                                 'assets/icons/shopping_bag.svg',
@@ -195,7 +192,6 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                                   color: Constants.blackColor,
                                 ),
                               ),
-                        color: Constants.whiteColor.withOpacity(0.7),
                         onTap: () {
                           bottomNavigationController.onItemTapped(3);
                           navigationService.pushReplacement(BottomNavigationBarControllerPage.routeName);
@@ -216,128 +212,151 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                 controller: scrollController,
                 physics: const BouncingScrollPhysics(),
                 child: Container(
-                  //height: 450,
+                  height: Utils.mediaQuery(context, 0.8, direction: 'H'),
                   padding: const EdgeInsets.only(left: 16, right: 16),
                   decoration: BoxDecoration(
                     color: Constants.whiteColor,
                     borderRadius: BorderRadius.circular(16),
                   ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(top: 32),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(top: 32),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Icon(IconData(0xe5f9, fontFamily: 'MaterialIcons'), size: 20),
+                              Text(
+                                ' ${args.review}',
+                                style: GoogleFonts.poppins(
+                                  color: Constants.blackColor,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Icon(IconData(0xe5f9, fontFamily: 'MaterialIcons'), size: 20),
                             Text(
-                              ' ${args.review}',
+                              '${args.name}',
                               style: GoogleFonts.poppins(
                                 color: Constants.blackColor,
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Text(
+                              '\$ ${args.price!}',
+                              style: GoogleFonts.poppins(
+                                color: Constants.blackColor,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.access_time,
+                              color: Constants.textFieldDisable,
+                              size: 20,
+                            ),
+                            SizedBox(width: 8),
+                            Text(
+                              'Low in stock',
+                              style: GoogleFonts.poppins(
+                                color: Constants.textFieldDisable,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                            SizedBox(width: 16),
+                            Icon(
+                              Icons.undo_outlined,
+                              color: Constants.textFieldDisable,
+                              size: 20,
+                            ),
+                            SizedBox(width: 8),
+                            Text(
+                              '30 Day Returns',
+                              style: GoogleFonts.poppins(
+                                color: Constants.textFieldDisable,
                                 fontSize: 14,
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
                           ],
                         ),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            '${args.name}',
-                            style: GoogleFonts.poppins(
-                              color: Constants.blackColor,
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold,
-                            ),
+                        SizedBox(height: 12),
+                        Text(
+                          'Color',
+                          textAlign: TextAlign.justify,
+                          style: GoogleFonts.poppins(
+                            color: Constants.blackColor,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
                           ),
-                          Text(
-                            '\$ ${args.price!}',
-                            style: GoogleFonts.poppins(
-                              color: Constants.blackColor,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.access_time,
-                            color: Constants.textFieldDisable,
-                            size: 20,
-                          ),
-                          SizedBox(width: 8),
-                          Text(
-                            'Low in stock',
-                            style: GoogleFonts.poppins(
-                              color: Constants.textFieldDisable,
-                              fontSize: 14,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                          SizedBox(width: 16),
-                          Icon(
-                            Icons.undo_outlined,
-                            color: Constants.textFieldDisable,
-                            size: 20,
-                          ),
-                          SizedBox(width: 8),
-                          Text(
-                            '30 Day Returns',
-                            style: GoogleFonts.poppins(
-                              color: Constants.textFieldDisable,
-                              fontSize: 14,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 12),
-                      Text(
-                        'Color',
-                        textAlign: TextAlign.justify,
-                        style: GoogleFonts.poppins(
-                          color: Constants.blackColor,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
                         ),
-                      ),
-                      SizedBox(height: 12),
-                      Column(
-                        children: [
-                          CardExpansionTileWidget(
-                            title: 'Description',
-                            description: '${args.description}',
-                          ),
-                          CardExpansionTileWidget(
-                            title: 'Free Delivery and Returns',
-                            description: 'Free Delivery and Returns',
-                          ),
-                          CardExpansionTileWidget(
-                            title: 'See Reviews',
-                            widget: [
-                              Padding(
-                                padding: const EdgeInsets.only(bottom: 8),
-                                child: Text(
-                                  'See Reviews',
-                                  style: GoogleFonts.poppins(
-                                    color: Constants.textField,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w500,
-                                    letterSpacing: 0.25,
-                                  ),
+                        SizedBox(
+                          height: 36,
+                          child: ListView.builder(
+                            physics: const BouncingScrollPhysics(),
+                            itemCount: args.color!.length,
+                            scrollDirection: Axis.horizontal,
+                            itemBuilder: (context, index) {
+                              return Container(
+                                width: 28,
+                                height: 28,
+                                margin: EdgeInsets.only(top: 8, right: 12),
+                                child: CustomIconButton(
+                                  color: productDetailController.selectColor == index
+                                      ? args.color![index]
+                                      : args.color![index].withOpacity(0.5),
+                                  borderRadius: 100,
+                                  onTap: () {
+                                    productDetailController.setColor(index);
+                                  },
                                 ),
-                              ),
-                            ],
+                              );
+                            },
                           ),
-                        ],
-                      ),
-                      SizedBox(height: 24),
-                    ],
+                        ),
+                        SizedBox(height: 12),
+                        Column(
+                          children: [
+                            CardExpansionTileWidget(
+                              title: 'Description',
+                              description: '${args.description}',
+                            ),
+                            CardExpansionTileWidget(
+                              title: 'Free Delivery and Returns',
+                              description: 'Free Delivery and Returns',
+                            ),
+                            CardExpansionTileWidget(
+                              title: 'See Reviews',
+                              widget: [
+                                for (var comment in args.comments!) ...[
+                                  CustomCardCommentsWidget(
+                                    id: comment.id!,
+                                    name: comment.name!,
+                                    comment: comment.comment!,
+                                    photo: comment.photo!,
+                                    review: comment.review!,
+                                    date: comment.date!,
+                                  ),
+                                ],
+                              ],
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               );
@@ -346,8 +365,25 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
-              color: Constants.whiteColor,
-              padding: const EdgeInsets.only(top: 8, left: 16, right: 16, bottom: 16),
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: <Color>[
+                    Constants.whiteColor.withOpacity(0.5),
+                    Constants.whiteColor.withOpacity(0.7),
+                    Constants.whiteColor,
+                    Constants.whiteColor,
+                    Constants.whiteColor,
+                    Constants.whiteColor,
+                    Constants.whiteColor,
+                    Constants.whiteColor,
+                    Constants.whiteColor,
+                  ],
+                  tileMode: TileMode.mirror,
+                ),
+              ),
+              padding: const EdgeInsets.only(top: 24, left: 16, right: 16, bottom: 16),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -358,15 +394,13 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                     child: CustomIconButton(
                       color: Constants.primaryColor.withOpacity(0.3),
                       widget: SvgPicture.asset(
-                        favorite == true ? 'assets/icons/favorite.svg' : 'assets/icons/favorite_outlined.svg',
+                        productDetailController.favorite == true ? 'assets/icons/favorite.svg' : 'assets/icons/favorite_outlined.svg',
                         color: Constants.blackColor,
                       ),
                       onTap: () {
-                        setState(() {
-                          favorite = !favorite;
-                        });
+                        productDetailController.setFavorite(!productDetailController.favorite);
 
-                        if (favorite == true) {
+                        if (productDetailController.favorite == true) {
                           favoriteController.setFavoriteProducts(args);
                         } else {
                           favoriteController.removeFavoriteProductsId(args.id!);
@@ -376,7 +410,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                   ),
                   CustomElevatedButton(
                     labelText: 'Add to Bag',
-                    width: Utils.mediaQuery(context, 0.75),
+                    width: Utils.mediaQuery(context, 0.74),
                     paddingButtonLeft: 0,
                     paddingButtonRight: 0,
                     onTap: () {

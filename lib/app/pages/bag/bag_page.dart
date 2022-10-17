@@ -9,9 +9,10 @@ import 'package:provider/provider.dart';
 import '../../../core/route/navigation_service.dart';
 import '../../../core/utils/constants.dart';
 import '../../../core/utils/utils.dart';
+import '../../../domain/models/products/product_model.dart';
 import '../../widgets/custom_app_bar.dart';
+import '../../widgets/custom_elevated_button.dart';
 import '../../widgets/custom_icon_button.dart';
-import '../product/product_detail_page.dart';
 import 'bag_controller.dart';
 import 'bag_detail_page.dart';
 
@@ -37,11 +38,25 @@ class _BagPageState extends State<BagPage> {
       _n++;
     });
   }
+
   void minus() {
     setState(() {
       if (_n != 0)
         _n--;
     });
+  }
+
+  calculateTotal(List<ProductModel> value) {
+    double total = 0;
+
+    for(int i = 0; i < value.length; i++) {
+      total += value[i].price!;
+    }
+
+    print('total ${total}');
+    print('total ${value.length}');
+
+    return total;
   }
 
   @override
@@ -73,199 +88,244 @@ class _BagPageState extends State<BagPage> {
               titleButton: 'Start Shopping',
               widthButton: Utils.mediaQuery(context, 0.4),
             )
-          : ListView.builder(
-              physics: const BouncingScrollPhysics(),
-              itemCount: bagController.listBagProducts.length,
-              padding: const EdgeInsets.only(top: 16, left: 20, bottom: 90),
-              itemBuilder: (context, index) {
-                return Slidable(
-                  key: Key(bagController.listBagProducts[index].id!),
-                  endActionPane: ActionPane(
-                    dismissible: DismissiblePane(
-                      onDismissed: () {
-                        bagController.removeBagProductsId(bagController.listBagProducts[index].id!);
-                      },
-                    ),
-                    motion: const DrawerMotion(),
-                    children: [
-                      SlidableAction(
-                        autoClose: true,
-                        flex: 1,
-                        onPressed: (value) {
-                          bagController.removeBagProductsId(bagController.listBagProducts[index].id!);
-                        },
-                        backgroundColor: Colors.red,
-                        foregroundColor: Colors.white,
-                        icon: Icons.delete,
-                        label: 'Delete',
-                      ),
-                    ],
-                  ),
-                  child: GestureDetector(
-                    onTap: () {
-                      navigationService.push(
-                        BagDetailPage.routeName,
-                        arguments: bagController.listBagProducts[index],
-                      );
-                    },
-                    child: SizedBox(
-                      width: Utils.mediaQuery(context, 1),
-                      child: Row(
-                        children: [
-                          Container(
-                            width: 160,
-                            height: 140,
-                            padding: const EdgeInsets.only(bottom: 10),
-                            child: Card(
-                              elevation: 1.5,
-                              color: Colors.grey.shade300,
-                              margin: const EdgeInsets.only(right: 16),
-                              shape: const RoundedRectangleBorder(
-                                borderRadius: BorderRadius.all(Radius.circular(12)),
-                              ),
-                              child: SizedBox(
-                                width: 180,
-                                child: ClipRRect(
-                                  borderRadius: const BorderRadius.all(Radius.circular(12)),
-                                  child: CachedNetworkImage(
-                                    imageUrl: bagController.listBagProducts[index].images![0],
-                                    fit: BoxFit.contain,
-                                    errorWidget: (context, url, error) => Padding(
-                                      padding: const EdgeInsets.all(24),
-                                      child: SvgPicture.asset(
-                                        'assets/icons/image_not_found.svg',
-                                        width: double.infinity,
-                                        color: Constants.whiteColor,
-                                      ),
-                                    ),
-                                    placeholder: (context, url) => const Center(
-                                      child: Padding(
-                                        padding: EdgeInsets.all(10),
-                                        child: CircularProgressIndicator(
-                                          valueColor: AlwaysStoppedAnimation<Color>(
-                                            Constants.primaryColor,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
+          : Column(
+              children: [
+                Expanded(
+                  child: ListView.builder(
+                    physics: const BouncingScrollPhysics(),
+                    itemCount: bagController.listBagProducts.length,
+                    padding: const EdgeInsets.only(top: 16, left: 20),
+                    itemBuilder: (context, index) {
+                      return Slidable(
+                        key: Key(bagController.listBagProducts[index].id!),
+                        endActionPane: ActionPane(
+                          dismissible: DismissiblePane(
+                            onDismissed: () {
+                              bagController.removeBagProductsId(bagController.listBagProducts[index].id!);
+                            },
                           ),
-                          Container(
-                            height: 140,
-                            padding: const EdgeInsets.only(top: 4, right: 16),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                          motion: const DrawerMotion(),
+                          children: [
+                            SlidableAction(
+                              autoClose: true,
+                              flex: 1,
+                              onPressed: (value) {
+                                bagController.removeBagProductsId(bagController.listBagProducts[index].id!);
+                              },
+                              backgroundColor: Colors.red,
+                              foregroundColor: Colors.white,
+                              icon: Icons.delete,
+                              label: 'Delete',
+                            ),
+                          ],
+                        ),
+                        child: GestureDetector(
+                          onTap: () {},
+                          child: SizedBox(
+                            width: Utils.mediaQuery(context, 1),
+                            child: Row(
                               children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      bagController.listBagProducts[index].name!,
-                                      style: GoogleFonts.poppins(
-                                        color: Constants.blackColor,
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold,
-                                        letterSpacing: 1.2,
+                                Container(
+                                  width: 160,
+                                  height: 140,
+                                  padding: const EdgeInsets.only(bottom: 10),
+                                  child: Card(
+                                    elevation: 1.5,
+                                    color: Colors.grey.shade300,
+                                    margin: const EdgeInsets.only(right: 16),
+                                    shape: const RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.all(Radius.circular(12)),
+                                    ),
+                                    child: SizedBox(
+                                      width: 180,
+                                      child: ClipRRect(
+                                        borderRadius: const BorderRadius.all(Radius.circular(12)),
+                                        child: CachedNetworkImage(
+                                          imageUrl: bagController.listBagProducts[index].images![0],
+                                          fit: BoxFit.contain,
+                                          errorWidget: (context, url, error) => Padding(
+                                            padding: const EdgeInsets.all(24),
+                                            child: SvgPicture.asset(
+                                              'assets/icons/image_not_found.svg',
+                                              width: double.infinity,
+                                              color: Constants.whiteColor,
+                                            ),
+                                          ),
+                                          placeholder: (context, url) => const Center(
+                                            child: Padding(
+                                              padding: EdgeInsets.all(10),
+                                              child: CircularProgressIndicator(
+                                                valueColor: AlwaysStoppedAnimation<Color>(
+                                                  Constants.primaryColor,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
                                       ),
                                     ),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          'Review (',
-                                          style: GoogleFonts.poppins(
-                                            color: Constants.blackColor,
-                                            fontSize: 12,
-                                            fontWeight: FontWeight.w500,
-                                          ),
-                                        ),
-                                        Icon(IconData(0xe5f9, fontFamily: 'MaterialIcons'), size: 16),
-                                        Text(
-                                          ' ${bagController.listBagProducts[index].review} )',
-                                          style: GoogleFonts.poppins(
-                                            color: Constants.blackColor,
-                                            fontSize: 12,
-                                            fontWeight: FontWeight.w500,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                                Text(
-                                  '\$ ${bagController.listBagProducts[index].price!}',
-                                  style: GoogleFonts.poppins(
-                                    color: Constants.blackColor,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
-                                SizedBox(
-                                  width: 80,
-                                  child: Stack(
-                                    alignment: Alignment.center,
+                                Container(
+                                  width: Utils.mediaQuery(context, 0.48),
+                                  height: 140,
+                                  padding: const EdgeInsets.only(top: 4, right: 16),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      Container(
-                                        width: 70,
-                                        color: Constants.primaryColor.withOpacity(0.5),
-                                        alignment: Alignment.center,
-                                        padding: EdgeInsets.all(2),
-                                        child: Text(
-                                          '$_n',
-                                          style: TextStyle(
-                                            fontSize: 12,
-                                          ),
-                                        ),
-                                      ),
-                                      Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        children: <Widget>[
-                                          SizedBox(
-                                            width: 22,
-                                            height: 22,
-                                            child: CustomIconButton(
-                                              widget: Icon(
-                                                Icons.remove,
-                                                color: Constants.whiteColor,
-                                                size: 16,
-                                              ),
-                                              color: Constants.textFieldDisable,
-                                              paddingButton: 0,
-                                              onTap: minus,
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            width: 22,
-                                            height: 22,
-                                            child: CustomIconButton(
-                                              widget: Icon(
-                                                Icons.add,
-                                                color: Constants.whiteColor,
-                                                size: 16,
-                                              ),
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            bagController.listBagProducts[index].name!,
+                                            style: GoogleFonts.poppins(
                                               color: Constants.blackColor,
-                                              paddingButton: 0,
-                                              onTap: add,
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.bold,
+                                              letterSpacing: 1.2,
                                             ),
+                                          ),
+                                          Row(
+                                            children: [
+                                              Text(
+                                                'Review (',
+                                                style: GoogleFonts.poppins(
+                                                  color: Constants.blackColor,
+                                                  fontSize: 12,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                              ),
+                                              Icon(IconData(0xe5f9, fontFamily: 'MaterialIcons'), size: 16),
+                                              Text(
+                                                ' ${bagController.listBagProducts[index].review} )',
+                                                style: GoogleFonts.poppins(
+                                                  color: Constants.blackColor,
+                                                  fontSize: 12,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                              ),
+                                            ],
                                           ),
                                         ],
                                       ),
+                                      Text(
+                                        '\$ ${bagController.listBagProducts[index].price!}',
+                                        style: GoogleFonts.poppins(
+                                          color: Constants.blackColor,
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 80,
+                                        child: Stack(
+                                          alignment: Alignment.center,
+                                          children: [
+                                            Container(
+                                              width: 70,
+                                              color: Constants.primaryColor.withOpacity(0.5),
+                                              alignment: Alignment.center,
+                                              padding: EdgeInsets.all(2),
+                                              child: Text(
+                                                '$_n',
+                                                style: TextStyle(
+                                                  fontSize: 12,
+                                                ),
+                                              ),
+                                            ),
+                                            Row(
+                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                              children: <Widget>[
+                                                SizedBox(
+                                                  width: 22,
+                                                  height: 22,
+                                                  child: CustomIconButton(
+                                                    widget: Icon(
+                                                      Icons.remove,
+                                                      color: Constants.whiteColor,
+                                                      size: 16,
+                                                    ),
+                                                    color: Constants.textFieldDisable,
+                                                    paddingButton: 0,
+                                                    onTap: minus,
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  width: 22,
+                                                  height: 22,
+                                                  child: CustomIconButton(
+                                                    widget: Icon(
+                                                      Icons.add,
+                                                      color: Constants.whiteColor,
+                                                      size: 16,
+                                                    ),
+                                                    color: Constants.blackColor,
+                                                    paddingButton: 0,
+                                                    onTap: add,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      SizedBox(),
                                     ],
                                   ),
                                 ),
-                                SizedBox(),
                               ],
                             ),
                           ),
-                        ],
-                      ),
-                    ),
+                        ),
+                      );
+                    },
                   ),
-                );
-              },
+                ),
+                Container(
+                  color: Constants.whiteColor,
+                  padding: const EdgeInsets.only(top: 8, left: 20, right: 20, bottom: 88),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Container(
+                        height: 50,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Total Price',
+                              style: GoogleFonts.poppins(
+                                color: Constants.textColor,
+                                fontSize: 12,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                            Text(
+                              '\$ ${calculateTotal(bagController.listBagProducts)}',
+                              style: GoogleFonts.poppins(
+                                color: Constants.blackColor,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      CustomElevatedButton(
+                        labelText: 'Proceed',
+                        width: Utils.mediaQuery(context, 0.5),
+                        paddingButtonLeft: 0,
+                        paddingButtonRight: 0,
+                        onTap: () {
+                          navigationService.push(BagDetailPage.routeName);
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
     );
   }

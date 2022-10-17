@@ -1,7 +1,6 @@
 import 'package:ecommerce_app/app/widgets/custom_app_bar.dart';
 import 'package:ecommerce_app/core/utils/utils.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
@@ -11,6 +10,7 @@ import '../../widgets/cliprrect_photo_widget.dart';
 import '../../widgets/custom_elevated_button.dart';
 import '../login/login_page.dart';
 import '../main/bottom_navigation_bar_controller.dart';
+import '../my_orders/my_orders_page.dart';
 import 'components/card_profile_widget.dart';
 import 'profile_edit_page.dart';
 
@@ -26,8 +26,6 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
-    var bottomNavigationController = Provider.of<BottomNavigationBarController>(context);
-
     return Scaffold(
       backgroundColor: Constants.whiteColor,
       appBar: CustomAppBar(context, title: 'Profile', isBackButtonVisible: true),
@@ -78,6 +76,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     'photo': 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
                     'name': 'Rafael Silva',
                     'email': '@rafael',
+                    'userName': '@rafael',
                   });
                 },
               ),
@@ -96,7 +95,9 @@ class _ProfilePageState extends State<ProfilePage> {
             CardProfileWidget(
               icon: Icons.assignment_outlined,
               title: 'My Orders',
-              onTap: () {},
+              onTap: () {
+                navigationService.push(MyOrdersPage.routeName);
+              },
             ),
             CardProfileWidget(
               iconSvg: 'alternate_map',
