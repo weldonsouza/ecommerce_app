@@ -43,7 +43,7 @@ class MyOrdersPage extends StatelessWidget {
                   margin: EdgeInsets.only(top: 8, right: 8),
                   child: CustomIconButton(
                     color: myOrdersController.selectTypeOrder == index
-                        ? Constants.primaryColor.withOpacity(0.7)
+                        ? Constants.primaryColor.withOpacity(0.4)
                         : Constants.transparent,
                     borderRadius: 100,
                     onTap: () {
@@ -77,7 +77,7 @@ class MyOrdersPage extends StatelessWidget {
                   width: Utils.mediaQuery(context, 1),
                   height: 150,
                   decoration: BoxDecoration(
-                    color: Constants.primaryColor.withOpacity(0.3),
+                    color: Constants.primaryColor.withOpacity(0.1),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   margin: EdgeInsets.only(bottom: 16),
