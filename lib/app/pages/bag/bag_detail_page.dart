@@ -51,8 +51,7 @@ class _BagDetailPageState extends State<BagDetailPage> {
             alignment: Alignment.bottomCenter,
             child: Container(
               color: Constants.whiteColor,
-              padding: const EdgeInsets.only(
-                  top: 8, left: 16, right: 16, bottom: 16),
+              padding: const EdgeInsets.only(top: 8, left: 16, right: 16, bottom: 16),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -71,7 +70,7 @@ class _BagDetailPageState extends State<BagDetailPage> {
                           ),
                         ),
                         Text(
-                          '\$ ${bagController.listBagProducts[0].price!}',
+                          '\$ ${bagController.totalValue}',
                           style: GoogleFonts.poppins(
                             color: Constants.blackColor,
                             fontSize: 20,

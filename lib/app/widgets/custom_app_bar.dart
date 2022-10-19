@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 import '../../core/route/navigation_service.dart';
 import '../../core/utils/constants.dart';
-import '../pages/main/bottom_navigation_bar_controller_page.dart';
 import '../pages/main/bottom_navigation_bar_controller.dart';
+import '../pages/main/bottom_navigation_bar_controller_page.dart';
 import 'custom_icon_button.dart';
 
 AppBar CustomAppBar(BuildContext context, {required String title, required bool isBackButtonVisible, Function()? onTapButtonBack, Widget? widget}) {

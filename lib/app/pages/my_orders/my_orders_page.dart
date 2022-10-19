@@ -6,12 +6,27 @@ import 'package:provider/provider.dart';
 import '../../../core/utils/constants.dart';
 import '../../widgets/custom_app_bar.dart';
 import '../../widgets/custom_icon_button.dart';
+import 'components/list_my_order_widget.dart';
 import 'my_orders_controller.dart';
 
-class MyOrdersPage extends StatelessWidget {
-  const MyOrdersPage({Key? key}) : super(key: key);
+class MyOrderDetailsWidget extends StatefulWidget {
+  const MyOrderDetailsWidget({Key? key}) : super(key: key);
 
   static String get routeName => '/my_orders';
+
+  @override
+  State<MyOrderDetailsWidget> createState() => _MyOrderDetailsWidgetState();
+}
+
+class _MyOrderDetailsWidgetState extends State<MyOrderDetailsWidget> {
+  @override
+  void initState() {
+    super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      Provider.of<MyOrdersController>(context, listen: false).init();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -68,67 +83,22 @@ class MyOrdersPage extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: ListView.builder(
-              physics: const BouncingScrollPhysics(),
-              itemCount: myOrdersController.orderTypes.length,
-              padding: const EdgeInsets.only(top: 20, left: 16, right: 16),
-              itemBuilder: (context, index) {
-                return Container(
-                  width: Utils.mediaQuery(context, 1),
-                  height: 150,
-                  decoration: BoxDecoration(
-                    color: Constants.primaryColor.withOpacity(0.1),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  margin: EdgeInsets.only(bottom: 16),
-                  padding: EdgeInsets.all(8),
-                  child: Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
-                            children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'Order No: ',
-                                    style: GoogleFonts.poppins(
-                                      color: Constants.blackColor,
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                          Text(
-                            'date,',
-                            style: GoogleFonts.poppins(
-                              color: Constants.textColor,
-                              fontSize: 12,
-                              fontWeight: FontWeight.w500,
-                              letterSpacing: 0.25,
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 12),
-                      Text(
-                        'comment',
-                        style: GoogleFonts.poppins(
-                          color: Constants.blackColor,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500,
+            child: myOrdersController.isLoading
+                ? const Center(
+                    child: Padding(
+                      padding: EdgeInsets.all(10),
+                      child: CircularProgressIndicator(
+                        valueColor: AlwaysStoppedAnimation<Color>(
+                          Constants.primaryColor,
                         ),
                       ),
-                    ],
-                  ),
-                );
-              },
-            ),
+                    ),
+                  )
+                : (myOrdersController.listMyOrders.isNotEmpty
+                    ? ListMyOrderWidget(
+                        listMyOrders: myOrdersController.listMyOrders,
+                      )
+                    : Container()),
           ),
         ],
       ),

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 import '../../../../domain/models/products/product_model.dart';
-import 'item_product_widget.dart';
+import 'product_item_widget.dart';
 
-class ListProductsWidget extends StatelessWidget {
+class ListItemsProductWidget extends StatelessWidget {
   final List<ProductModel> listProduct;
 
-  const ListProductsWidget({
+  const ListItemsProductWidget({
     Key? key,
     required this.listProduct,
   }) : super(key: key);
@@ -17,7 +17,7 @@ class ListProductsWidget extends StatelessWidget {
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         crossAxisSpacing: 8,
-        mainAxisSpacing: 8,
+        mainAxisSpacing: 0,
         mainAxisExtent: 290,
       ),
       physics: const BouncingScrollPhysics(),

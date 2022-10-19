@@ -10,8 +10,8 @@ import '../../../core/route/navigation_service.dart';
 import '../../../core/utils/constants.dart';
 import '../main/bottom_navigation_bar_controller_page.dart';
 import 'forgot_password_page.dart';
-import 'login_signup_page.dart';
 import 'login_controller.dart';
+import 'login_signup_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);

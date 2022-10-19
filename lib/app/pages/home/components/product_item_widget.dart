@@ -125,17 +125,17 @@ class _ProductItemWidgetState extends State<ProductItemWidget> {
             ],
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 12, right: 12, bottom: 12),
+            padding: const EdgeInsets.only(top: 8, left: 8, right: 8),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   '${widget.item.name}',
-                  overflow: TextOverflow.ellipsis,
                   style: GoogleFonts.poppins(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
                     color: Constants.blackColor,
+                    height: 0.9,
                   ),
                 ),
                 SizedBox(width: double.infinity),

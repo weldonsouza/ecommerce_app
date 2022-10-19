@@ -13,7 +13,6 @@ import '../../../core/route/navigation_service.dart';
 import '../../../core/utils/constants.dart';
 import '../../../core/utils/utils.dart';
 import '../../../domain/models/products/product_model.dart';
-import '../../widgets/cliprrect_photo_widget.dart';
 import '../../widgets/custom_elevated_button.dart';
 import '../../widgets/custom_icon_button.dart';
 import '../bag/bag_controller.dart';
@@ -241,13 +240,17 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              '${args.name}',
-                              style: GoogleFonts.poppins(
-                                color: Constants.blackColor,
-                                fontSize: 24,
-                                fontWeight: FontWeight.bold,
+                            SizedBox(
+                              width: Utils.mediaQuery(context, 0.62),
+                              child: Text(
+                                '${args.name}',
+                                style: GoogleFonts.poppins(
+                                  color: Constants.blackColor,
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
                             Text(
@@ -410,7 +413,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                   ),
                   CustomElevatedButton(
                     labelText: 'Add to Bag',
-                    width: Utils.mediaQuery(context, 0.74),
+                    width: Utils.mediaQuery(context, 0.71),
                     paddingButtonLeft: 0,
                     paddingButtonRight: 0,
                     onTap: () {

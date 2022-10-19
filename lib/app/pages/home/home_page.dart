@@ -1,13 +1,15 @@
+import 'package:badges/badges.dart';
 import 'package:ecommerce_app/app/widgets/custom_icon_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 import '../../../core/utils/constants.dart';
 import '../../../core/utils/utils.dart';
 import '../../widgets/custom_text_form_field.dart';
-import '../favorite/favorite_controller.dart';
-import 'components/list_items_services_widget.dart';
+import 'components/list_items_product_widget.dart';
 import 'components/list_promotional_banner_widget.dart';
 import 'home_controller.dart';
 
@@ -38,40 +40,57 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       backgroundColor: Constants.whiteColor,
-      /*appBar: AppBar(
+      appBar: AppBar(
         backgroundColor: Constants.transparent,
         elevation: 0,
         systemOverlayStyle: SystemUiOverlayStyle.dark,
-        actions: [
-          Container(
-            width: 28,
-            height: 28,
-            margin: EdgeInsets.only(right: 16),
-            child: CustomIconButton(
-              widget: Icon(Icons.notifications, size: 20),
-              color: Constants.primaryColor.withOpacity(0.3),
+        automaticallyImplyLeading: false,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Hi ',
+                  style: GoogleFonts.poppins(
+                    fontSize: 24,
+                    color: Constants.blackColor,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  'Rafael',
+                  style: GoogleFonts.poppins(
+                    fontSize: 24,
+                    color: Constants.blackColor,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
             ),
-          ),
-        ],
-      ),*/
+            Container(
+              width: 40,
+              height: 40,
+              child: CustomIconButton(
+                widget:Badge(
+                  badgeColor: Constants.errorSnackBarColor,
+                  elevation: 0,
+                  position: BadgePosition.topEnd(top: -2, end: -1),
+                  child: Icon(Icons.notifications, size: 20),
+                ),
+                color: Constants.primaryColor.withOpacity(0.3),
+                onTap: () {},
+              ),
+            ),
+          ],
+        ),
+      ),
       body: Column(
         children: [
-          /*Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Container(
-                width: 40,
-                height: 40,
-                margin: EdgeInsets.only(top: 40, right: 16, bottom: 24),
-                child: CustomIconButton(
-                  widget: Icon(Icons.notifications, size: 20),
-                  color: Constants.primaryColor.withOpacity(0.3),
-                ),
-              ),
-            ],
-          ),*/
           Padding(
-            padding: const EdgeInsets.only(top: 40, left: 4, bottom: 8),
+            padding: const EdgeInsets.only(top: 16, left: 4, bottom: 8),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -134,7 +153,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                         )
                       : (homeController.listProducts.isNotEmpty
-                          ? ListProductsWidget(
+                          ? ListItemsProductWidget(
                               listProduct: homeController.listProducts,
                             )
                           : Container()),

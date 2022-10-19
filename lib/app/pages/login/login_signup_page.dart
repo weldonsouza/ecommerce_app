@@ -7,10 +7,8 @@ import 'package:provider/provider.dart';
 
 import '../../../core/route/navigation_service.dart';
 import '../../../core/utils/constants.dart';
-import '../../../core/utils/utils.dart';
 import '../../widgets/custom_elevated_button.dart';
 import '../../widgets/custom_text_form_field.dart';
-import '../home/home_page.dart';
 import 'login_controller.dart';
 
 class LoginSignUpPage extends StatefulWidget {

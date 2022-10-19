@@ -9,7 +9,6 @@ import 'package:provider/provider.dart';
 import '../../../core/route/navigation_service.dart';
 import '../../../core/utils/constants.dart';
 import '../../../core/utils/utils.dart';
-import '../../../domain/models/products/product_model.dart';
 import '../../widgets/custom_app_bar.dart';
 import '../../widgets/custom_elevated_button.dart';
 import '../../widgets/custom_icon_button.dart';
@@ -44,19 +43,6 @@ class _BagPageState extends State<BagPage> {
       if (_n != 0)
         _n--;
     });
-  }
-
-  calculateTotal(List<ProductModel> value) {
-    double total = 0;
-
-    for(int i = 0; i < value.length; i++) {
-      total += value[i].price!;
-    }
-
-    print('total ${total}');
-    print('total ${value.length}');
-
-    return total;
   }
 
   @override
@@ -303,7 +289,7 @@ class _BagPageState extends State<BagPage> {
                               ),
                             ),
                             Text(
-                              '\$ ${calculateTotal(bagController.listBagProducts)}',
+                              '\$ ${bagController.totalValue}',
                               style: GoogleFonts.poppins(
                                 color: Constants.blackColor,
                                 fontSize: 20,

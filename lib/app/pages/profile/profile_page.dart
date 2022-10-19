@@ -2,14 +2,12 @@ import 'package:ecommerce_app/app/widgets/custom_app_bar.dart';
 import 'package:ecommerce_app/core/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 
 import '../../../core/route/navigation_service.dart';
 import '../../../core/utils/constants.dart';
 import '../../widgets/cliprrect_photo_widget.dart';
 import '../../widgets/custom_elevated_button.dart';
 import '../login/login_page.dart';
-import '../main/bottom_navigation_bar_controller.dart';
 import '../my_orders/my_orders_page.dart';
 import 'components/card_profile_widget.dart';
 import 'profile_edit_page.dart';
@@ -96,7 +94,7 @@ class _ProfilePageState extends State<ProfilePage> {
               icon: Icons.assignment_outlined,
               title: 'My Orders',
               onTap: () {
-                navigationService.push(MyOrdersPage.routeName);
+                navigationService.push(MyOrderDetailsWidget.routeName);
               },
             ),
             CardProfileWidget(
