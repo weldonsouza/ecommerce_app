@@ -7,7 +7,7 @@ final NavigationService navigationService = NavigationService();
 class NavigationService {
   static GlobalKey<NavigatorState> navigationKey = GlobalKey<NavigatorState>();
 
-  static void showSnackbarMessage(String message, bool isSuccess) {
+  static void showSnackBarMessage(String message, bool isSuccess) {
     ScaffoldMessenger.of(NavigationService.navigationKey.currentContext!)
       ..hideCurrentSnackBar
       ..showSnackBar(

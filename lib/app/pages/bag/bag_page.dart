@@ -30,21 +30,6 @@ class _BagPageState extends State<BagPage> {
     super.initState();
   }
 
-  int _n = 0;
-
-  void add() {
-    setState(() {
-      _n++;
-    });
-  }
-
-  void minus() {
-    setState(() {
-      if (_n != 0)
-        _n--;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     var bagController = Provider.of<BagController>(context);
@@ -214,7 +199,7 @@ class _BagPageState extends State<BagPage> {
                                               alignment: Alignment.center,
                                               padding: EdgeInsets.all(2),
                                               child: Text(
-                                                '$_n',
+                                                '${bagController.quantity}',
                                                 style: TextStyle(
                                                   fontSize: 12,
                                                 ),
@@ -234,7 +219,7 @@ class _BagPageState extends State<BagPage> {
                                                     ),
                                                     color: Constants.textFieldDisable,
                                                     paddingButton: 0,
-                                                    onTap: minus,
+                                                    onTap: () => bagController.removeQuantity(),
                                                   ),
                                                 ),
                                                 SizedBox(
@@ -248,7 +233,7 @@ class _BagPageState extends State<BagPage> {
                                                     ),
                                                     color: Constants.blackColor,
                                                     paddingButton: 0,
-                                                    onTap: add,
+                                                    onTap: () => bagController.addQuantity(),
                                                   ),
                                                 ),
                                               ],

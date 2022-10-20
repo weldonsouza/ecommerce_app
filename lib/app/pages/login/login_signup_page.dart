@@ -1,5 +1,4 @@
 import 'package:ecommerce_app/app/pages/login/login_page.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -35,7 +34,6 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> with TickerProviderSt
 
   @override
   Widget build(BuildContext context) {
-    //Controller do provider
     var loginController = Provider.of<LoginController>(context);
 
     return Scaffold(
@@ -70,8 +68,6 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> with TickerProviderSt
                 labelText: 'First Name',
                 hint: 'First Name',
                 keyboardType: TextInputType.text,
-                //prefixIcon: const Icon(Icons.description),
-                //onChanged: (value) => loginController.setLogin(value),
               ),
               const SizedBox(height: 12),
               CustomTextFormField(
@@ -79,8 +75,6 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> with TickerProviderSt
                 labelText: 'Last Name',
                 hint: 'Last Name',
                 keyboardType: TextInputType.text,
-                //prefixIcon: const Icon(Icons.description),
-                //onChanged: (value) => loginController.setLogin(value),
               ),
               const SizedBox(height: 12),
               CustomTextFormField(
@@ -88,7 +82,6 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> with TickerProviderSt
                 labelText: 'Email',
                 hint: 'Email',
                 keyboardType: TextInputType.emailAddress,
-                //prefixIcon: const Icon(Icons.description),
                 onChanged: (value) => loginController.setLogin(value),
               ),
               const SizedBox(height: 12),
@@ -112,8 +105,6 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> with TickerProviderSt
                     });
                   },
                 ),
-                //value: loginController.birthdate,
-                //onChange: (value) => loginController.setBirthdate(value),
               ),
               const SizedBox(height: 32),
               CustomElevatedButton(

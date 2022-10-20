@@ -27,9 +27,6 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
 
   @override
   Widget build(BuildContext context) {
-    //Controller do provider
-    //var loginController = Provider.of<LoginProviderController>(context);
-
     return Scaffold(
       backgroundColor: Constants.whiteColor,
       appBar: AppBar(
@@ -69,8 +66,6 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                 labelText: 'Email',
                 hint: 'Email',
                 keyboardType: TextInputType.emailAddress,
-                //prefixIcon: const Icon(Icons.description),
-                //onChanged: (value) => loginController.setLogin(value),
               ),
             ],
           ),

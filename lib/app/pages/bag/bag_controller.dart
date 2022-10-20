@@ -5,10 +5,16 @@ import '../../../domain/models/products/product_model.dart';
 class BagController with ChangeNotifier {
   List<ProductModel> listBagProducts = <ProductModel>[];
   double totalValue = 0;
+  int quantity = 1;
 
   setBagProducts(ProductModel value) {
-    listBagProducts.add(value);
-    calculateTotal();
+    final index = listBagProducts.indexWhere((element) => element.id! == value.id!);
+
+    if (index == -1) {
+      listBagProducts.add(value);
+      calculateTotal();
+    }
+
     notifyListeners();
   }
 
@@ -26,6 +32,16 @@ class BagController with ChangeNotifier {
     }
 
     totalValue = double.parse(total.toStringAsFixed(2));
+    notifyListeners();
+  }
+
+  addQuantity() {
+    quantity++;
+    notifyListeners();
+  }
+
+  removeQuantity() {
+    if (quantity != 0) quantity--;
     notifyListeners();
   }
 }

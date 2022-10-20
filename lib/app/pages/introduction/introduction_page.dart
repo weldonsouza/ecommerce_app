@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/app/pages/introduction/components/custom_introduction_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -19,119 +20,20 @@ class _IntroductionPageState extends State<IntroductionPage> {
   String text = 'Next';
 
   List<Widget> pages = [
-    Container(
-      decoration: const BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage("assets/background/background1.jpg"),
-          fit: BoxFit.fill,
-        ),
-      ),
-      child: Align(
-        alignment: Alignment.bottomCenter,
-        child: Padding(
-          padding: const EdgeInsets.only(left: 16, right: 16, bottom: 90),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: const [
-              Text(
-                'Explore the best products',
-                style: TextStyle(
-                  color: Constants.whiteColor,
-                  fontSize: 40,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(top: 12, bottom: 40),
-                child: Text(
-                  'Get the decibels delivered to your ears perfectly.',
-                  style: TextStyle(
-                    color: Constants.primaryColor,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
+    CustomIntroductionWidget(
+      imageBackground: 'background1',
+      title: 'Explore the best products',
+      subTitle: 'Get the decibels delivered to your ears perfectly.',
     ),
-    Container(
-      decoration: const BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage("assets/background/background2.jpg"),
-          fit: BoxFit.fill,
-        ),
-      ),
-      child: Align(
-        alignment: Alignment.bottomCenter,
-        child: Padding(
-          padding: const EdgeInsets.only(left: 16, right: 16, bottom: 90),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: const [
-              Text(
-                'Explore the best products',
-                style: TextStyle(
-                  color: Constants.whiteColor,
-                  fontSize: 40,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(top: 12, bottom: 40),
-                child: Text(
-                  'Get the decibels delivered to your ears perfectly.',
-                  style: TextStyle(
-                    color: Constants.primaryColor,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
+    CustomIntroductionWidget(
+      imageBackground: 'background2',
+      title: 'Explore the best products',
+      subTitle: 'Get the decibels delivered to your ears perfectly.',
     ),
-    Container(
-      decoration: const BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage("assets/background/background3.jpg"),
-          fit: BoxFit.fill,
-        ),
-      ),
-      child: Align(
-        alignment: Alignment.bottomCenter,
-        child: Padding(
-          padding: const EdgeInsets.only(left: 16, right: 16, bottom: 90),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: const [
-              Text(
-                'Explore the best products',
-                style: TextStyle(
-                  color: Constants.whiteColor,
-                  fontSize: 40,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(top: 12, bottom: 40),
-                child: Text(
-                  'Get the decibels delivered to your ears perfectly.',
-                  style: TextStyle(
-                    color: Constants.primaryColor,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
+    CustomIntroductionWidget(
+      imageBackground: 'background3',
+      title: 'Explore the best products',
+      subTitle: 'Get the decibels delivered to your ears perfectly.',
     ),
   ];
 

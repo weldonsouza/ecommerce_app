@@ -30,12 +30,7 @@ class _ListPromotionalBannerWidgetState extends State<ListPromotionalBannerWidge
       padding: const EdgeInsets.only(left: 20),
       itemBuilder: (context, index) {
         return GestureDetector(
-          onTap: () {
-            /*Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => ServicePromoView(listBanners: widget.listBanners![index])),
-          );*/
-          },
+          onTap: () {},
           child: Container(
             width: 287,
             height: 128,

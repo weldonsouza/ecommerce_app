@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class Constants {
-  static String token = '';
   static const String PRIVACY_POLICY_URL = 'https://www.google.com.br';
 
   static const MaterialColor customPrimaryColor = MaterialColor(
@@ -29,5 +28,4 @@ class Constants {
   static const Color textColor = Color(0xff9D9D9D);
   static const Color textField = Color(0xff7C757F);
   static const Color textFieldDisable = Color(0xffc9c9c9);
-  static const Color orange = Color(0xffF7C07B);
 }

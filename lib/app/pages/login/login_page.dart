@@ -94,8 +94,6 @@ class _LoginPageState extends State<LoginPage> {
                     });
                   },
                 ),
-                //value: loginController.birthdate,
-                //onChange: (value) => loginController.setBirthdate(value),
               ),
               Padding(
                 padding: const EdgeInsets.only(right: 16, bottom: 24),
@@ -117,7 +115,7 @@ class _LoginPageState extends State<LoginPage> {
                             onChanged: (value) => {
                               setState(() {
                                 toggleValue = value;
-                              },
+                                },
                               ),
                             },
                           ),

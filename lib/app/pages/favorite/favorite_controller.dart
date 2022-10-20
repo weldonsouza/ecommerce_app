@@ -6,7 +6,12 @@ class FavoriteController with ChangeNotifier {
   List<ProductModel> listFavoriteProducts = <ProductModel>[];
 
   setFavoriteProducts(ProductModel value) {
-    listFavoriteProducts.add(value);
+    final index = listFavoriteProducts.indexWhere((element) => element.id! == value.id!);
+
+    if (index == -1) {
+      listFavoriteProducts.add(value);
+    }
+
     notifyListeners();
   }
 
