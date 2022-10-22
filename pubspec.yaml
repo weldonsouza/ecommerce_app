@@ -33,5 +33,4 @@ flutter:
   uses-material-design: true
   assets:
     - assets/background/
-    - assets/earphone/
     - assets/icons/
