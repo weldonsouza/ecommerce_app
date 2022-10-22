@@ -32,6 +32,12 @@ class _BottomNavigationBarControllerPageState extends State<BottomNavigationBarC
 
     return Scaffold(
       extendBody: true,
+      body: PageStorage(
+        child: bottomNavigationController.pages[
+          bottomNavigationController.selectedIndex
+        ],
+        bucket: bottomNavigationController.bucket,
+      ),
       bottomNavigationBar: Container(
         height: 60,
         decoration: const BoxDecoration(
@@ -56,97 +62,94 @@ class _BottomNavigationBarControllerPageState extends State<BottomNavigationBarC
             topLeft: Radius.circular(0),
             topRight: Radius.circular(0),
           ),
-          child: BottomNavigationBar(
-            currentIndex: bottomNavigationController.selectedIndex,
-            onTap: bottomNavigationController.onItemTapped,
-            backgroundColor: Colors.transparent,
-            elevation: 0,
-            showSelectedLabels: false,
-            showUnselectedLabels: false,
-            unselectedIconTheme: const IconThemeData(color: Constants.textFieldDisable),
-            selectedIconTheme: const IconThemeData(color: Constants.primaryColor),
-            unselectedItemColor: Constants.textFieldDisable,
-            type: BottomNavigationBarType.fixed,
-            items: <BottomNavigationBarItem>[
-              BottomNavigationBarItem(
-                label: 'Home',
-                tooltip: 'Home',
-                icon: SvgPicture.asset(
-                  bottomNavigationController.selectedIndex == 0
-                      ? 'assets/icons/home.svg'
-                      : 'assets/icons/home_outlined.svg',
-                  width: 24,
-                  height: 24,
-                  color: bottomNavigationController.selectedIndex == 0
-                      ? Constants.whiteColor
-                      : Constants.textFieldDisable,
+          child: SingleChildScrollView(
+            child: BottomNavigationBar(
+              currentIndex: bottomNavigationController.selectedIndex,
+              onTap: bottomNavigationController.onItemTapped,
+              backgroundColor: Colors.transparent,
+              elevation: 0,
+              showSelectedLabels: false,
+              showUnselectedLabels: false,
+              unselectedIconTheme: const IconThemeData(color: Constants.textFieldDisable),
+              selectedIconTheme: const IconThemeData(color: Constants.primaryColor),
+              unselectedItemColor: Constants.textFieldDisable,
+              type: BottomNavigationBarType.fixed,
+              selectedFontSize: 0,
+              items: <BottomNavigationBarItem>[
+                BottomNavigationBarItem(
+                  label: 'Home',
+                  tooltip: 'Home',
+                  icon: SvgPicture.asset(
+                    bottomNavigationController.selectedIndex == 0
+                        ? 'assets/icons/home.svg'
+                        : 'assets/icons/home_outlined.svg',
+                    width: 24,
+                    height: 24,
+                    color: bottomNavigationController.selectedIndex == 0
+                        ? Constants.whiteColor
+                        : Constants.textFieldDisable,
+                  ),
                 ),
-              ),
-              BottomNavigationBarItem(
-                label: 'Favorite',
-                tooltip: 'Favorite',
-                icon: SvgPicture.asset(
-                  bottomNavigationController.selectedIndex == 1
-                      ? 'assets/icons/favorite.svg'
-                      : 'assets/icons/favorite_outlined.svg',
-                  width: 24,
-                  height: 24,
-                  color: bottomNavigationController.selectedIndex == 1
-                      ? Constants.whiteColor
-                      : Constants.textFieldDisable,
+                BottomNavigationBarItem(
+                  label: 'Favorite',
+                  tooltip: 'Favorite',
+                  icon: SvgPicture.asset(
+                    bottomNavigationController.selectedIndex == 1
+                        ? 'assets/icons/favorite.svg'
+                        : 'assets/icons/favorite_outlined.svg',
+                    width: 24,
+                    height: 24,
+                    color: bottomNavigationController.selectedIndex == 1
+                        ? Constants.whiteColor
+                        : Constants.textFieldDisable,
+                  ),
                 ),
-              ),
-              BottomNavigationBarItem(
-                label: 'Search',
-                tooltip: 'Search',
-                icon: SvgPicture.asset(
-                  bottomNavigationController.selectedIndex == 2
-                      ? 'assets/icons/search.svg'
-                      : 'assets/icons/search_outlined.svg',
-                  width: 24,
-                  height: 24,
-                  color: bottomNavigationController.selectedIndex == 2
-                      ? Constants.whiteColor
-                      : Constants.textFieldDisable,
+                BottomNavigationBarItem(
+                  label: 'Search',
+                  tooltip: 'Search',
+                  icon: SvgPicture.asset(
+                    bottomNavigationController.selectedIndex == 2
+                        ? 'assets/icons/search.svg'
+                        : 'assets/icons/search_outlined.svg',
+                    width: 24,
+                    height: 24,
+                    color: bottomNavigationController.selectedIndex == 2
+                        ? Constants.whiteColor
+                        : Constants.textFieldDisable,
+                  ),
                 ),
-              ),
-              BottomNavigationBarItem(
-                label: 'Bag',
-                tooltip: 'Bag',
-                icon: SvgPicture.asset(
-                  bottomNavigationController.selectedIndex == 3
-                      ? 'assets/icons/shopping_bag.svg'
-                      : 'assets/icons/shopping_bag_outlined.svg',
-                  width: 24,
-                  height: 24,
-                  color: bottomNavigationController.selectedIndex == 3
-                      ? Constants.whiteColor
-                      : Constants.textFieldDisable,
+                BottomNavigationBarItem(
+                  label: 'Bag',
+                  tooltip: 'Bag',
+                  icon: SvgPicture.asset(
+                    bottomNavigationController.selectedIndex == 3
+                        ? 'assets/icons/shopping_bag.svg'
+                        : 'assets/icons/shopping_bag_outlined.svg',
+                    width: 24,
+                    height: 24,
+                    color: bottomNavigationController.selectedIndex == 3
+                        ? Constants.whiteColor
+                        : Constants.textFieldDisable,
+                  ),
                 ),
-              ),
-              BottomNavigationBarItem(
-                label: 'Profile',
-                tooltip: 'Profile',
-                icon: SvgPicture.asset(
-                  bottomNavigationController.selectedIndex == 4
-                      ? 'assets/icons/person.svg'
-                      : 'assets/icons/person_outlined.svg',
-                  width: 24,
-                  height: 24,
-                  color: bottomNavigationController.selectedIndex == 4
-                      ? Constants.whiteColor
-                      : Constants.textFieldDisable,
+                BottomNavigationBarItem(
+                  label: 'Profile',
+                  tooltip: 'Profile',
+                  icon: SvgPicture.asset(
+                    bottomNavigationController.selectedIndex == 4
+                        ? 'assets/icons/person.svg'
+                        : 'assets/icons/person_outlined.svg',
+                    width: 24,
+                    height: 24,
+                    color: bottomNavigationController.selectedIndex == 4
+                        ? Constants.whiteColor
+                        : Constants.textFieldDisable,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
-      ),
-      body: PageStorage(
-        child: bottomNavigationController.pages[
-          bottomNavigationController.selectedIndex
-        ],
-        bucket: bottomNavigationController.bucket,
       ),
     );
   }
